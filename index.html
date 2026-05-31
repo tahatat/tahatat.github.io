@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Kashfia ❤️</title>
+    <title>Site Under Construction</title>
 
     <style>
         * {
@@ -13,121 +13,70 @@
         }
 
         body {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            padding: 20px;
+            font-family: Arial, sans-serif;
+            background: #ffffff;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.95);
-            max-width: 650px;
-            width: 100%;
-            border-radius: 25px;
-            padding: 35px;
+        .container {
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            background: #f9f9f9;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 90%;
         }
 
         h1 {
+            font-size: 2rem;
             color: #e63946;
             margin-bottom: 15px;
-            font-size: 2.3rem;
-        }
-
-        .subtitle {
-            color: #666;
-            margin-bottom: 25px;
-            font-style: italic;
         }
 
         p {
             color: #444;
-            line-height: 1.9;
-            font-size: 1.05rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
         }
 
-        .signature {
-            margin-top: 25px;
+        .emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
+            animation: bounce 1.5s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .footer {
+            margin-top: 20px;
             font-weight: bold;
             color: #e63946;
-            font-size: 1.1rem;
-        }
-
-        .heart {
-            font-size: 32px;
-            margin-top: 20px;
-            animation: pulse 1.5s infinite;
-        }
-
-        .main-photo {
-            width: 100%;
-            margin-top: 30px;
-            border-radius: 20px;
-            object-fit: cover;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.15);
-            }
-            100% {
-                transform: scale(1);
-            }
         }
     </style>
 </head>
+
 <body>
 
-    <div class="card">
+    <div class="container">
+        <div class="emoji">🚧</div>
 
-        <h1>❤️ To Kashfia ❤️</h1>
-
-        <div class="subtitle">
-            A little message from Taharat
-        </div>
+        <h1>Site Under Construction</h1>
 
         <p>
-            Dear Kashfia,
-            <br><br>
-
-            I just wanted to tell you how much I admire your beautiful voice.
-            Every song you sing carries a special warmth and sweetness that
-            makes listening to you truly enjoyable.
-
-            <br><br>
-
-            I'm currently working on creating a beautiful website especially
-            for you. It's still under construction, but I promise it will be
-            something meaningful and memorable when it's finished.
-
-            <br><br>
-
-            Thank you for being such an inspiration. I hope this small page
-            brings a smile to your face while I continue building something
-            even better.
-
-            <br><br>
-
-            No matter how long it takes, I want this website to be something
-            special that reflects how much I appreciate and admire you.
+            This website is currently being built.<br>
+            Please check back soon!
         </p>
 
-        <div class="signature">
-            — Taharat
+        <div class="footer">
+            Developed by Taharat
         </div>
-
-        <div class="heart">💖</div>
-
-        <img src="kashfia.jpeg" alt="Taharat and Kashfia" class="main-photo">
-
     </div>
 
 </body>
