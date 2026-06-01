@@ -49,7 +49,9 @@
 
   <!-- Embed the game -->
   <script>
-    lime.embed("Level Devil", "openfl-content", 854, 480, { parameters: {} });
+    window.addEventListener("load", () => {
+  lime.embed("Level Devil", "openfl-content", 854, 480);
+});
   </script>
 </body>
 </html>
