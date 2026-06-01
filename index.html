@@ -1,20 +1,49 @@
+```html
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Bonk Output</title>
+<title>Bonk Game</title>
+
 <style>
 body{
   margin:0;
   background:#111;
   display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
   height:100vh;
+  gap:15px;
 }
+
 canvas{
-  max-width:100%;
-  border:1px solid #333;
+  border:2px solid #333;
+  background:#fff;
+}
+
+.controls{
+  display:flex;
+  gap:10px;
+}
+
+button{
+  padding:12px 24px;
+  font-size:18px;
+  font-weight:bold;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+#bonkBtn{
+  background:#ff4444;
+  color:white;
+}
+
+#resetBtn{
+  background:#444;
+  color:white;
 }
 </style>
 </head>
@@ -22,34 +51,41 @@ canvas{
 
 <canvas id="canvas" width="900" height="600"></canvas>
 
-<script>
-const attackerFace =
-  "me.jpeg";
+<div class="controls">
+  <button id="bonkBtn">BONK HIM</button>
+  <button id="resetBtn">RESET</button>
+</div>
 
-const victimFace =
-  "girl.jpeg";
+<script>
+
+const attackerFace = "me.jpeg";
+const victimFace = "girl.jpeg";
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
+const bonkBtn = document.getElementById("bonkBtn");
+
 const attacker = new Image();
 const victim = new Image();
 
-attacker.crossOrigin = "anonymous";
-victim.crossOrigin = "anonymous";
+let hammerOffset = 0;
+let victimShake = 0;
+let showBonkText = false;
+let showKnockout = false;
+let bonkCount = 0;
+let animating = false;
+
+attacker.src = attackerFace;
+victim.src = victimFace;
 
 Promise.all([
-  new Promise(r=>{
-    attacker.onload=r;
-    attacker.src=attackerFace;
-  }),
-  new Promise(r=>{
-    victim.onload=r;
-    victim.src=victimFace;
-  })
+  new Promise(r => attacker.onload = r),
+  new Promise(r => victim.onload = r)
 ]).then(render);
 
 function circleImage(img,x,y,size){
+
   ctx.save();
 
   ctx.beginPath();
@@ -69,12 +105,15 @@ function circleImage(img,x,y,size){
 
 function render(){
 
+  ctx.clearRect(0,0,900,600);
+
   ctx.fillStyle="#f7f7f7";
   ctx.fillRect(0,0,900,600);
 
-  // attacker body
   ctx.strokeStyle="#000";
   ctx.lineWidth=8;
+
+  // attacker
 
   ctx.beginPath();
   ctx.moveTo(250,250);
@@ -91,7 +130,8 @@ function render(){
   ctx.lineTo(360,200);
   ctx.stroke();
 
-  // victim body
+  // victim
+
   ctx.beginPath();
   ctx.moveTo(650,390);
   ctx.lineTo(650,520);
@@ -108,8 +148,10 @@ function render(){
   ctx.stroke();
 
   // hammer
+
   ctx.save();
-  ctx.translate(430,170);
+
+  ctx.translate(430,170 + hammerOffset);
   ctx.rotate(-0.5);
 
   ctx.fillStyle="#8b5a2b";
@@ -121,29 +163,141 @@ function render(){
   ctx.restore();
 
   // faces
-  circleImage(attacker,250,180,130);
-  circleImage(victim,650,320,130);
 
-  // comic text
-  ctx.fillStyle="red";
-  ctx.font="bold 70px Arial";
-  ctx.fillText("BONK!",420,120);
+  circleImage(attacker,250,180,130);
+
+  circleImage(
+    victim,
+    650 + victimShake,
+    320,
+    130
+  );
+
+  // bonk text
+
+  if(showBonkText){
+
+    ctx.fillStyle="red";
+    ctx.font="bold 70px Arial";
+    ctx.fillText("BONK!",400,120);
+  }
 
   // stars
-  ctx.fillStyle="gold";
-  for(let i=0;i<10;i++){
-    ctx.beginPath();
-    ctx.arc(
-      560 + Math.random()*60,
-      230 + Math.random()*60,
-      5,
-      0,
-      Math.PI*2
-    );
-    ctx.fill();
+
+  if(showBonkText){
+
+    ctx.fillStyle="gold";
+
+    for(let i=0;i<15;i++){
+
+      ctx.beginPath();
+
+      ctx.arc(
+        550 + Math.random()*80,
+        220 + Math.random()*80,
+        4 + Math.random()*4,
+        0,
+        Math.PI*2
+      );
+
+      ctx.fill();
+    }
   }
+
+  // hit counter
+
+  ctx.fillStyle="#000";
+  ctx.font="bold 28px Arial";
+  ctx.fillText("Hits: " + bonkCount,20,40);
+
+  // knockout
+
+  if(showKnockout){
+
+    ctx.fillStyle="black";
+    ctx.font="bold 90px Arial";
+    ctx.fillText("KNOCK OUT!",210,90);
+
+  }
+
 }
+
+function sleep(ms){
+  return new Promise(resolve => setTimeout(resolve,ms));
+}
+
+async function bonkAnimation(){
+
+  if(animating || showKnockout) return;
+
+  animating = true;
+
+  bonkCount++;
+
+  hammerOffset = 80;
+  victimShake = (Math.random()*30)-15;
+  showBonkText = true;
+
+  render();
+
+  await sleep(150);
+
+  hammerOffset = 0;
+  victimShake = 0;
+
+  render();
+
+  await sleep(150);
+
+  showBonkText = false;
+
+  if(bonkCount >= 3){
+
+    showKnockout = true;
+
+    bonkBtn.disabled = true;
+    bonkBtn.textContent = "KNOCKED OUT";
+
+  }else if(bonkCount === 2){
+
+    bonkBtn.textContent = "FINAL BONK";
+
+  }else{
+
+    bonkBtn.textContent = "BONK AGAIN";
+
+  }
+
+  render();
+
+  animating = false;
+}
+
+function resetGame(){
+
+  bonkCount = 0;
+  hammerOffset = 0;
+  victimShake = 0;
+  showBonkText = false;
+  showKnockout = false;
+  animating = false;
+
+  bonkBtn.disabled = false;
+  bonkBtn.textContent = "BONK HIM";
+
+  render();
+}
+
+document
+  .getElementById("bonkBtn")
+  .addEventListener("click", bonkAnimation);
+
+document
+  .getElementById("resetBtn")
+  .addEventListener("click", resetGame);
+
 </script>
 
 </body>
 </html>
+```
