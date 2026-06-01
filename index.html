@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <title>Level Devil</title>
 
-  <!-- Viewport for mobile -->
-  <meta id="viewport" name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="apple-mobile-web-app-capable" content="yes">
 
   <style>
@@ -16,42 +14,53 @@
       height: 100%;
       overflow: hidden;
       background: #000;
-      font-family: sans-serif;
     }
 
     #openfl-content {
       width: 100%;
       height: 100%;
-      position: relative;
     }
-
-    
-    
   </style>
 
-  <!-- Poki stub -->
-  <script src="poki-sdk.js"></script>
+  <!-- ✅ 1. Poki SDK STUB (must be BEFORE game loads) -->
+  <script>
+    window.PokiSDK = {
+      init: async () => {},
+      initWithVideoHB: async () => {},
+      gameLoadingStart: () => {},
+      gameLoadingFinished: () => {},
+      gameplayStart: () => {},
+      gameplayStop: () => {},
+      commercialBreak: async () => {},
+      rewardedBreak: async () => false,
+      setDebug: () => {},
+      logError: () => {}
+    };
+  </script>
 
-  <!-- Main game build -->
+  <!-- ✅ 2. Game engine -->
   <script src="Level Devil.js"></script>
 </head>
 
 <body>
+
   <noscript>
-    This game requires JavaScript. Please enable JavaScript to play.
+    This game requires JavaScript.
   </noscript>
 
   <!-- Game container -->
   <div id="openfl-content"></div>
 
-  <!-- Buy Me a Coffee -->
-  
-
-  <!-- Embed the game -->
+  <!-- ✅ 3. Safe boot -->
   <script>
     window.addEventListener("load", () => {
-  lime.embed("Level Devil", "openfl-content", 854, 480);
-});
+      if (typeof lime !== "undefined") {
+        lime.embed("Level Devil", "openfl-content", 854, 480);
+      } else {
+        console.error("Lime not loaded");
+      }
+    });
   </script>
+
 </body>
 </html>
