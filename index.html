@@ -2,35 +2,31 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DIUBS | Band Society</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DIUBS Management</title>
 
 <style>
 :root{
-  --bg:#080808;
-  --panel:#111;
-  --panel2:#171717;
   --red:#e50914;
-  --red2:#ff3030;
-  --white:#fff;
-  --muted:#aaa;
+  --red2:#ff3040;
+  --dark:#080808;
+  --dark2:#111;
+  --dark3:#181818;
+  --card:#151515;
   --border:#292929;
-  --green:#21c77a;
-  --yellow:#f5c542;
+  --text:#f5f5f5;
+  --muted:#9d9d9d;
+  --green:#25c46b;
+  --yellow:#ffbd2e;
+  --danger:#ff4d4d;
 }
 
-*{box-sizing:border-box}
-
-html,body{
-  margin:0;
-  padding:0;
-  min-height:100%;
-  font-family:Arial,Helvetica,sans-serif;
-  background:var(--bg);
-  color:var(--white);
-}
+*{box-sizing:border-box;margin:0;padding:0}
 
 body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#050505,#110607);
+  color:var(--text);
   min-height:100vh;
 }
 
@@ -42,174 +38,130 @@ button{
   cursor:pointer;
 }
 
-.hidden{
-  display:none!important;
+.hidden{display:none!important}
+
+#app{
+  min-height:100vh;
 }
 
-/* =========================
-   HEADER
-========================= */
+/* AUTH */
 
-.header{
-  height:70px;
-  background:#050505;
-  border-bottom:1px solid #252525;
+.auth-screen{
+  min-height:100vh;
   display:flex;
+  justify-content:center;
   align-items:center;
-  justify-content:space-between;
-  padding:0 25px;
-  position:sticky;
-  top:0;
-  z-index:100;
+  padding:20px;
+  background:
+    radial-gradient(circle at top right,rgba(229,9,20,.18),transparent 35%),
+    radial-gradient(circle at bottom left,rgba(229,9,20,.12),transparent 30%),
+    #050505;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:900;
-  letter-spacing:1px;
+.auth-card{
+  width:100%;
+  max-width:440px;
+  background:#101010;
+  border:1px solid #292929;
+  border-radius:18px;
+  padding:32px;
+  box-shadow:0 20px 60px #000;
 }
 
-.brand-mark{
-  width:42px;
-  height:42px;
+.logo{
+  text-align:center;
+  margin-bottom:25px;
+}
+
+.logo-mark{
+  width:72px;
+  height:72px;
   border-radius:50%;
   background:var(--red);
-  display:grid;
-  place-items:center;
-  font-size:19px;
-}
-
-.brand-text small{
-  display:block;
-  color:var(--muted);
-  font-size:10px;
-  letter-spacing:2px;
-}
-
-.brand-text strong{
-  font-size:17px;
-}
-
-.header-right{
   display:flex;
   align-items:center;
-  gap:10px;
+  justify-content:center;
+  margin:auto;
+  font-size:28px;
+  font-weight:900;
+  box-shadow:0 0 30px rgba(229,9,20,.35);
 }
 
-.role-badge{
-  padding:7px 11px;
-  border-radius:20px;
-  background:#1c1c1c;
-  color:#ddd;
-  font-size:12px;
+.logo h1{
+  margin-top:15px;
+  font-size:25px;
 }
 
-/* =========================
-   NAV
-========================= */
+.logo p{
+  color:var(--muted);
+  margin-top:5px;
+}
 
-.nav{
+.tabs{
   display:flex;
-  gap:8px;
-  padding:15px 25px;
-  background:#0b0b0b;
-  border-bottom:1px solid var(--border);
-  overflow-x:auto;
+  gap:5px;
+  background:#090909;
+  padding:5px;
+  border-radius:10px;
+  margin-bottom:20px;
 }
 
-.nav button{
+.tab{
+  flex:1;
+  border:0;
   background:transparent;
-  border:1px solid transparent;
   color:#aaa;
-  padding:11px 16px;
+  padding:11px;
   border-radius:7px;
-  white-space:nowrap;
 }
 
-.nav button:hover,
-.nav button.active{
-  background:#1a0809;
-  border-color:#4b1518;
+.tab.active{
+  background:var(--red);
   color:#fff;
 }
 
-.nav button.active{
-  color:#ff3d45;
+.field{
+  margin-bottom:15px;
 }
 
-/* =========================
-   MAIN
-========================= */
-
-.container{
-  width:min(1250px,94%);
-  margin:0 auto;
-  padding:28px 0 60px;
+.field label{
+  display:block;
+  color:#ccc;
+  font-size:13px;
+  margin-bottom:7px;
 }
 
-.page-title{
-  margin-bottom:25px;
+input,select,textarea{
+  width:100%;
+  background:#0b0b0b;
+  border:1px solid #303030;
+  color:#fff;
+  border-radius:9px;
+  padding:12px;
+  outline:none;
 }
 
-.page-title h1{
-  margin:0 0 7px;
-  font-size:30px;
+input:focus,select:focus,textarea:focus{
+  border-color:var(--red);
 }
 
-.page-title p{
-  margin:0;
-  color:var(--muted);
+textarea{
+  resize:vertical;
+  min-height:90px;
 }
-
-.section{
-  margin-bottom:25px;
-}
-
-.card{
-  background:linear-gradient(145deg,#131313,#0e0e0e);
-  border:1px solid var(--border);
-  border-radius:12px;
-  padding:20px;
-}
-
-.card h2,
-.card h3{
-  margin-top:0;
-}
-
-.grid{
-  display:grid;
-  gap:16px;
-}
-
-.grid-2{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
-
-.grid-3{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
-
-.grid-4{
-  grid-template-columns:repeat(4,minmax(0,1fr));
-}
-
-/* =========================
-   BUTTONS
-========================= */
 
 .btn{
   border:0;
-  border-radius:7px;
-  padding:10px 15px;
-  color:#fff;
+  border-radius:9px;
+  padding:11px 15px;
   background:#292929;
+  color:#fff;
+  transition:.2s;
 }
 
 .btn:hover{
-  filter:brightness(1.2);
+  transform:translateY(-1px);
+  filter:brightness(1.15);
 }
 
 .btn-primary{
@@ -220,443 +172,429 @@ button{
   background:var(--red2);
 }
 
-.btn-danger{
-  background:#551116;
-  color:#ff6d74;
+.btn-success{background:#167944}
+.btn-danger{background:#a91818}
+.btn-warning{background:#805e0b}
+
+.full{
+  width:100%;
 }
 
-.btn-success{
-  background:#123c29;
-  color:#62e5a9;
+.message{
+  margin-top:12px;
+  padding:10px;
+  border-radius:8px;
+  font-size:13px;
+  display:none;
 }
 
-.btn-warning{
-  background:#3d310d;
-  color:#f6d86c;
-}
+.message.show{display:block}
+.message.error{background:#3a1010;color:#ff8b8b}
+.message.success{background:#0d321e;color:#8cffbb}
 
-.btn-small{
-  padding:7px 10px;
-  font-size:12px;
-}
+/* APP */
 
-.btn-row{
+.app-shell{
   display:flex;
-  gap:8px;
+  min-height:100vh;
+}
+
+.sidebar{
+  width:245px;
+  background:#0b0b0b;
+  border-right:1px solid #242424;
+  position:fixed;
+  top:0;
+  left:0;
+  bottom:0;
+  padding:20px 14px;
+  z-index:50;
+}
+
+.sidebar-logo{
+  font-size:20px;
+  font-weight:900;
+  padding:10px;
+  margin-bottom:20px;
+}
+
+.sidebar-logo span{
+  color:var(--red);
+}
+
+.nav-btn{
+  width:100%;
+  text-align:left;
+  background:transparent;
+  border:0;
+  color:#aaa;
+  padding:13px;
+  border-radius:9px;
+  margin-bottom:4px;
+}
+
+.nav-btn:hover,.nav-btn.active{
+  background:#241010;
+  color:#fff;
+}
+
+.nav-btn.active{
+  border-left:3px solid var(--red);
+}
+
+.sidebar-bottom{
+  position:absolute;
+  bottom:20px;
+  left:14px;
+  right:14px;
+}
+
+.main{
+  margin-left:245px;
+  width:calc(100% - 245px);
+}
+
+.topbar{
+  height:68px;
+  border-bottom:1px solid #252525;
+  background:rgba(8,8,8,.92);
+  backdrop-filter:blur(10px);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 25px;
+  position:sticky;
+  top:0;
+  z-index:30;
+}
+
+.topbar-title{
+  font-weight:800;
+}
+
+.user-chip{
+  background:#191919;
+  border:1px solid #292929;
+  padding:8px 12px;
+  border-radius:20px;
+  font-size:13px;
+}
+
+.content{
+  padding:25px;
+  max-width:1500px;
+  margin:auto;
+}
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+.page-title{
+  margin-bottom:20px;
+}
+
+.page-title h2{
+  font-size:28px;
+}
+
+.page-title p{
+  color:var(--muted);
+  margin-top:5px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.stat-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+}
+
+.stat-card small{
+  color:#999;
+}
+
+.stat-card strong{
+  display:block;
+  font-size:30px;
+  margin-top:8px;
+}
+
+.section{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.section-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+  margin-bottom:17px;
   flex-wrap:wrap;
 }
 
-/* =========================
-   FORMS
-========================= */
-
-label{
-  display:block;
-  color:#bbb;
-  font-size:13px;
-  margin-bottom:6px;
+.section-header h3{
+  font-size:19px;
 }
 
-input,
-select,
-textarea{
-  width:100%;
-  background:#090909;
-  border:1px solid #333;
-  color:#fff;
-  border-radius:7px;
-  padding:11px 12px;
-  outline:none;
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:15px;
 }
 
-input:focus,
-select:focus,
-textarea:focus{
-  border-color:var(--red);
+.grid-3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
 }
 
-textarea{
-  resize:vertical;
-  min-height:90px;
+.actions{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
 }
-
-.form-group{
-  margin-bottom:15px;
-}
-
-/* =========================
-   STATS
-========================= */
-
-.stat{
-  background:#111;
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:17px;
-}
-
-.stat .number{
-  font-size:28px;
-  font-weight:900;
-  margin-bottom:5px;
-}
-
-.stat .label{
-  color:#999;
-  font-size:12px;
-}
-
-/* =========================
-   BADGES
-========================= */
-
-.badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  font-size:11px;
-  background:#262626;
-  color:#ccc;
-}
-
-.badge-red{
-  background:#3d0e12;
-  color:#ff6b73;
-}
-
-.badge-green{
-  background:#0e3524;
-  color:#55e4a1;
-}
-
-.badge-yellow{
-  background:#3b300d;
-  color:#f4d46a;
-}
-
-/* =========================
-   EMPTY STATE
-========================= */
-
-.empty{
-  text-align:center;
-  padding:45px 20px;
-  color:#777;
-}
-
-.empty-icon{
-  font-size:40px;
-  margin-bottom:12px;
-}
-
-.empty strong{
-  display:block;
-  color:#aaa;
-  margin-bottom:5px;
-}
-
-/* =========================
-   TABLE
-========================= */
 
 .table-wrap{
-  overflow:auto;
+  overflow-x:auto;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:650px;
+  min-width:700px;
 }
 
 th,td{
-  padding:12px;
-  border-bottom:1px solid #242424;
   text-align:left;
-  font-size:13px;
+  padding:12px;
+  border-bottom:1px solid #282828;
+  vertical-align:top;
 }
 
 th{
-  color:#888;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.5px;
-}
-
-/* =========================
-   ATTENDANCE
-========================= */
-
-.member-list{
-  display:grid;
-  gap:8px;
-}
-
-.member-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-  padding:12px;
-  background:#101010;
-  border:1px solid #242424;
-  border-radius:8px;
-}
-
-.member-info{
-  min-width:0;
-}
-
-.member-name{
-  font-weight:bold;
-}
-
-.member-meta{
-  color:#777;
-  font-size:11px;
-  margin-top:3px;
-}
-
-.present{
-  border-color:#145d3a;
-  background:#0c2118;
-}
-
-.present-time{
-  color:#55e4a1;
+  color:#aaa;
   font-size:12px;
+  text-transform:uppercase;
 }
 
-/* =========================
-   SONG
-========================= */
-
-.song-card{
-  background:#101010;
-  border:1px solid #292929;
-  border-radius:10px;
-  padding:17px;
-  margin-bottom:12px;
+td{
+  font-size:14px;
 }
 
-.song-header{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:15px;
+.badge{
+  display:inline-block;
+  padding:5px 9px;
+  border-radius:20px;
+  background:#292929;
+  font-size:11px;
+}
+
+.badge.green{background:#123a25;color:#74eaa6}
+.badge.red{background:#401313;color:#ff8787}
+.badge.yellow{background:#3b2e0d;color:#ffd76b}
+
+.empty{
+  text-align:center;
+  padding:35px;
+  color:#777;
+}
+
+.setup-card{
+  border:1px solid #303030;
+  background:#0e0e0e;
+  border-radius:12px;
+  padding:16px;
   margin-bottom:15px;
 }
 
-.song-title{
-  font-size:18px;
-  font-weight:800;
+.setup-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:14px;
 }
 
-.role-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
+.setup-header h4{
+  color:#fff;
 }
 
-.role-box{
-  background:#090909;
-  border:1px solid #252525;
-  border-radius:7px;
+.song-slot{
+  background:#171717;
+  border:1px solid #292929;
+  border-radius:9px;
+  padding:12px;
+  margin-top:9px;
+}
+
+.song-slot strong{
+  color:var(--red2);
+}
+
+.team-list{
+  display:flex;
+  gap:7px;
+  flex-wrap:wrap;
+  margin-top:8px;
+}
+
+.team-pill{
+  background:#242424;
+  padding:6px 9px;
+  border-radius:20px;
+  font-size:12px;
+}
+
+.warning{
+  background:#3a2a08;
+  color:#ffd96b;
+  border:1px solid #6c5311;
   padding:10px;
-}
-
-.role-box strong{
-  display:block;
-  color:#888;
-  font-size:10px;
-  text-transform:uppercase;
-  margin-bottom:5px;
-}
-
-.role-box span{
+  border-radius:8px;
+  margin-top:10px;
   font-size:13px;
 }
 
-/* =========================
-   WARNING
-========================= */
-
-.warning{
-  background:#241d08;
-  border:1px solid #5a4811;
-  color:#efd26a;
-  border-radius:8px;
-  padding:11px 13px;
-  font-size:12px;
-  margin-top:10px;
-}
-
 .info{
-  background:#0d1c2a;
-  border:1px solid #193b59;
-  color:#8dc8ff;
+  background:#101d2c;
+  color:#8bc8ff;
+  border:1px solid #203b59;
+  padding:10px;
   border-radius:8px;
-  padding:11px 13px;
-  font-size:12px;
+  font-size:13px;
 }
 
-.success{
-  background:#0c2418;
-  border:1px solid #185c3c;
-  color:#62e5a9;
-  border-radius:8px;
-  padding:11px 13px;
-  font-size:12px;
+.mobile-menu{
+  display:none;
+  border:0;
+  background:transparent;
+  color:#fff;
+  font-size:24px;
 }
-
-/* =========================
-   MODAL
-========================= */
 
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.78);
-  display:flex;
+  background:rgba(0,0,0,.75);
+  display:none;
   align-items:center;
   justify-content:center;
   padding:20px;
-  z-index:500;
+  z-index:100;
 }
 
-.modal-box{
-  width:min(650px,100%);
-  max-height:90vh;
-  overflow:auto;
+.modal.show{
+  display:flex;
+}
+
+.modal-card{
   background:#111;
   border:1px solid #333;
-  border-radius:13px;
+  border-radius:14px;
   padding:22px;
+  width:100%;
+  max-width:650px;
+  max-height:90vh;
+  overflow:auto;
 }
 
-.modal-head{
+.modal-header{
   display:flex;
   justify-content:space-between;
-  gap:15px;
   align-items:center;
   margin-bottom:18px;
 }
 
-.modal-head h2{
-  margin:0;
-}
-
 .close{
-  background:none;
   border:0;
-  color:#aaa;
-  font-size:24px;
-}
-
-/* =========================
-   LOGIN
-========================= */
-
-.login-screen{
-  min-height:100vh;
-  display:grid;
-  place-items:center;
-  padding:20px;
-  background:
-    radial-gradient(circle at 50% 0%,#3b080c 0%,transparent 35%),
-    #060606;
-}
-
-.login-box{
-  width:min(440px,100%);
-  background:#111;
-  border:1px solid #333;
-  border-radius:14px;
-  padding:30px;
-  box-shadow:0 20px 60px rgba(0,0,0,.5);
-}
-
-.login-logo{
-  text-align:center;
-  margin-bottom:25px;
-}
-
-.login-logo .circle{
-  width:70px;
-  height:70px;
-  margin:auto;
+  background:#252525;
+  color:#fff;
   border-radius:50%;
-  background:var(--red);
-  display:grid;
-  place-items:center;
-  font-size:28px;
+  width:34px;
+  height:34px;
 }
 
-.login-logo h1{
-  margin:15px 0 5px;
+.toast{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#171717;
+  border:1px solid #444;
+  border-left:4px solid var(--red);
+  padding:13px 17px;
+  border-radius:8px;
+  z-index:200;
+  display:none;
+  max-width:350px;
 }
 
-.login-logo p{
-  color:#777;
-  margin:0;
+.toast.show{
+  display:block;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-.footer{
-  text-align:center;
-  color:#555;
-  padding:30px 15px;
-  border-top:1px solid #1c1c1c;
-  font-size:12px;
+@media(max-width:1000px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .grid-3{grid-template-columns:1fr 1fr}
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:800px){
-  .grid-2,
-  .grid-3,
-  .grid-4{
-    grid-template-columns:1fr;
+@media(max-width:750px){
+  .sidebar{
+    transform:translateX(-100%);
+    transition:.25s;
   }
 
-  .header{
-    padding:0 13px;
+  .sidebar.open{
+    transform:translateX(0);
   }
 
-  .container{
-    width:94%;
-    padding-top:20px;
+  .main{
+    margin-left:0;
+    width:100%;
   }
 
-  .page-title h1{
-    font-size:25px;
+  .mobile-menu{
+    display:block;
   }
 
-  .role-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-@media(max-width:500px){
-  .brand-text strong{
-    font-size:14px;
+  .topbar{
+    padding:0 15px;
   }
 
-  .role-badge{
-    display:none;
-  }
-
-  .header{
-    height:62px;
-  }
-
-  .card{
+  .content{
     padding:15px;
+  }
+
+  .cards{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .grid-2,.grid-3{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:450px){
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .auth-card{
+    padding:22px;
   }
 }
 </style>
@@ -664,88 +602,774 @@ th{
 
 <body>
 
-<div id="app"></div>
+<div id="app">
 
-<script>
+<!-- AUTH SCREEN -->
+
+<div id="authScreen" class="auth-screen">
+  <div class="auth-card">
+
+    <div class="logo">
+      <div class="logo-mark">D</div>
+      <h1>DIUBS MANAGEMENT</h1>
+      <p>Band Society Management System</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab active" id="loginTab" onclick="switchAuth('login')">Login</button>
+      <button class="tab" id="registerTab" onclick="switchAuth('register')">Register</button>
+    </div>
+
+    <div id="loginForm">
+      <div class="field">
+        <label>Email</label>
+        <input id="loginEmail" type="email" placeholder="your@email.com">
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input id="loginPassword" type="password" placeholder="Password">
+      </div>
+
+      <button class="btn btn-primary full" onclick="loginUser()">LOGIN</button>
+    </div>
+
+    <div id="registerForm" class="hidden">
+      <div class="field">
+        <label>Full Name</label>
+        <input id="regName" placeholder="Your name">
+      </div>
+
+      <div class="field">
+        <label>Phone</label>
+        <input id="regPhone" placeholder="01XXXXXXXXX">
+      </div>
+
+      <div class="field">
+        <label>Email</label>
+        <input id="regEmail" type="email" placeholder="your@email.com">
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input id="regPassword" type="password" placeholder="Minimum 6 characters">
+      </div>
+
+      <button class="btn btn-primary full" onclick="registerUser()">CREATE MEMBER ACCOUNT</button>
+      <p style="color:#777;font-size:12px;margin-top:12px">
+        New registrations are automatically created as Member accounts.
+      </p>
+    </div>
+
+    <div id="authMessage" class="message"></div>
+
+  </div>
+</div>
+
+
+<!-- MAIN APPLICATION -->
+
+<div id="mainApp" class="app-shell hidden">
+
+  <aside class="sidebar" id="sidebar">
+
+    <div class="sidebar-logo">
+      <span>DIUBS</span> MANAGEMENT
+    </div>
+
+    <div id="organizerNav">
+      <button class="nav-btn active" data-page="dashboard" onclick="showPage('dashboard')">⌂ Dashboard</button>
+      <button class="nav-btn" data-page="meetings" onclick="showPage('meetings')">▣ Meetings</button>
+      <button class="nav-btn" data-page="attendance" onclick="showPage('attendance')">✓ Attendance</button>
+      <button class="nav-btn" data-page="breaking" onclick="showPage('breaking')">♪ Breaking Pad</button>
+      <button class="nav-btn" data-page="bookings" onclick="showPage('bookings')">▤ Bookings</button>
+      <button class="nav-btn" data-page="payments" onclick="showPage('payments')">৳ Payments</button>
+      <button class="nav-btn" data-page="members" onclick="showPage('members')">♙ Members</button>
+      <button class="nav-btn" data-page="settings" onclick="showPage('settings')">⚙ Settings</button>
+    </div>
+
+    <div id="memberNav" class="hidden">
+      <button class="nav-btn active" data-page="memberHome" onclick="showPage('memberHome')">⌂ Home</button>
+      <button class="nav-btn" data-page="memberMeetings" onclick="showPage('memberMeetings')">▣ Meetings</button>
+      <button class="nav-btn" data-page="memberAttendance" onclick="showPage('memberAttendance')">✓ My Attendance</button>
+      <button class="nav-btn" data-page="memberBreaking" onclick="showPage('memberBreaking')">♪ Breaking Pad</button>
+      <button class="nav-btn" data-page="memberBookings" onclick="showPage('memberBookings')">▤ My Bookings</button>
+      <button class="nav-btn" data-page="profile" onclick="showPage('profile')">♙ My Profile</button>
+    </div>
+
+    <div class="sidebar-bottom">
+      <button class="nav-btn" onclick="logoutUser()">↪ Logout</button>
+    </div>
+
+  </aside>
+
+
+  <main class="main">
+
+    <header class="topbar">
+      <button class="mobile-menu" onclick="toggleSidebar()">☰</button>
+      <div class="topbar-title" id="topTitle">Dashboard</div>
+      <div class="user-chip" id="userChip">User</div>
+    </header>
+
+    <div class="content">
+
+      <!-- ORGANIZER DASHBOARD -->
+
+      <section id="page-dashboard" class="page active">
+
+        <div class="page-title">
+          <h2>Organizer Dashboard</h2>
+          <p>Full control over DIUBS activities.</p>
+        </div>
+
+        <div class="cards">
+          <div class="stat-card">
+            <small>Members</small>
+            <strong id="statMembers">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <small>Meetings</small>
+            <strong id="statMeetings">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <small>Breaking Sessions</small>
+            <strong id="statSessions">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <small>Pending Payments</small>
+            <strong id="statPayments">0</strong>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h3>Quick Actions</h3>
+          </div>
+
+          <div class="actions">
+            <button class="btn btn-primary" onclick="openMeetingModal()">+ Create Meeting</button>
+            <button class="btn btn-primary" onclick="openSessionModal()">+ Create Breaking Session</button>
+            <button class="btn" onclick="showPage('members')">Manage Members</button>
+            <button class="btn" onclick="showPage('settings')">Payment Settings</button>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- MEETINGS -->
+
+      <section id="page-meetings" class="page">
+
+        <div class="page-title">
+          <h2>Meetings</h2>
+          <p>Create and manage meetings.</p>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h3>All Meetings</h3>
+            <button class="btn btn-primary" onclick="openMeetingModal()">+ Add Meeting</button>
+          </div>
+
+          <div id="meetingsList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- ATTENDANCE -->
+
+      <section id="page-attendance" class="page">
+
+        <div class="page-title">
+          <h2>Meeting Attendance</h2>
+          <p>Bulk attendance and accurate late-arrival tracking.</p>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h3>Select Meeting</h3>
+          </div>
+
+          <select id="attendanceMeetingSelect" onchange="renderAttendance()">
+            <option value="">Select a meeting</option>
+          </select>
+        </div>
+
+        <div id="attendanceWorkspace"></div>
+
+      </section>
+
+
+      <!-- BREAKING PAD -->
+
+      <section id="page-breaking" class="page">
+
+        <div class="page-title">
+          <h2>Breaking Pad Session</h2>
+          <p>Organize complete musician setups, songs and bookings.</p>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h3>Sessions</h3>
+            <button class="btn btn-primary" onclick="openSessionModal()">+ Create Session</button>
+          </div>
+
+          <div id="sessionsList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- BOOKINGS -->
+
+      <section id="page-bookings" class="page">
+
+        <div class="page-title">
+          <h2>Bookings</h2>
+          <p>Manage Breaking Pad bookings.</p>
+        </div>
+
+        <div class="section">
+          <div id="allBookingsList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- PAYMENTS -->
+
+      <section id="page-payments" class="page">
+
+        <div class="page-title">
+          <h2>Payments</h2>
+          <p>Review and verify submitted payments.</p>
+        </div>
+
+        <div class="section">
+          <div id="paymentsList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- MEMBERS -->
+
+      <section id="page-members" class="page">
+
+        <div class="page-title">
+          <h2>Members</h2>
+          <p>Organizer can add, edit or delete members.</p>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h3>Member Management</h3>
+            <button class="btn btn-primary" onclick="openMemberModal()">+ Add Member</button>
+          </div>
+
+          <div id="membersList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- SETTINGS -->
+
+      <section id="page-settings" class="page">
+
+        <div class="page-title">
+          <h2>Settings</h2>
+          <p>Organizer-controlled payment methods and attendance permissions.</p>
+        </div>
+
+        <div class="section">
+
+          <div class="section-header">
+            <h3>Payment Methods</h3>
+          </div>
+
+          <div class="grid-2">
+
+            <div class="field">
+              <label>bKash Number</label>
+              <input id="bkashSetting">
+            </div>
+
+            <div class="field">
+              <label>Nagad Number</label>
+              <input id="nagadSetting">
+            </div>
+
+            <div class="field">
+              <label>Bank Account</label>
+              <input id="bankSetting">
+            </div>
+
+            <div class="field">
+              <label>Bank Name</label>
+              <input id="bankNameSetting">
+            </div>
+
+          </div>
+
+          <button class="btn btn-primary" onclick="saveSettings()">Save Payment Settings</button>
+
+        </div>
+
+        <div class="section">
+
+          <div class="section-header">
+            <h3>Attendance Takers</h3>
+            <button class="btn btn-primary" onclick="openTakerModal()">+ Give Permission</button>
+          </div>
+
+          <div id="takersList"></div>
+
+        </div>
+
+      </section>
+
+
+      <!-- MEMBER HOME -->
+
+      <section id="page-memberHome" class="page">
+
+        <div class="page-title">
+          <h2>Welcome to DIUBS</h2>
+          <p>See your meetings, sessions and bookings.</p>
+        </div>
+
+        <div class="cards">
+          <div class="stat-card">
+            <small>My Bookings</small>
+            <strong id="memberBookingCount">0</strong>
+          </div>
+
+          <div class="stat-card">
+            <small>My Attendance</small>
+            <strong id="memberAttendanceCount">0</strong>
+          </div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h3>Upcoming Breaking Pad Sessions</h3>
+          </div>
+          <div id="memberUpcomingSessions"></div>
+        </div>
+
+      </section>
+
+
+      <!-- MEMBER MEETINGS -->
+
+      <section id="page-memberMeetings" class="page">
+
+        <div class="page-title">
+          <h2>Meetings</h2>
+          <p>Available DIUBS meetings.</p>
+        </div>
+
+        <div class="section">
+          <div id="memberMeetingsList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- MEMBER ATTENDANCE -->
+
+      <section id="page-memberAttendance" class="page">
+
+        <div class="page-title">
+          <h2>My Attendance</h2>
+          <p>Your meeting attendance history.</p>
+        </div>
+
+        <div class="section">
+          <div id="memberAttendanceList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- MEMBER BREAKING -->
+
+      <section id="page-memberBreaking" class="page">
+
+        <div class="page-title">
+          <h2>Breaking Pad</h2>
+          <p>Browse sessions and book your place.</p>
+        </div>
+
+        <div class="section">
+          <div id="memberSessionsList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- MEMBER BOOKINGS -->
+
+      <section id="page-memberBookings" class="page">
+
+        <div class="page-title">
+          <h2>My Bookings</h2>
+          <p>Your Breaking Pad bookings and payment status.</p>
+        </div>
+
+        <div class="section">
+          <div id="memberBookingsList"></div>
+        </div>
+
+      </section>
+
+
+      <!-- PROFILE -->
+
+      <section id="page-profile" class="page">
+
+        <div class="page-title">
+          <h2>My Profile</h2>
+          <p>Your DIUBS account information.</p>
+        </div>
+
+        <div class="section">
+          <div id="profileInfo"></div>
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+</div>
+
+
+<!-- MEETING MODAL -->
+
+<div id="meetingModal" class="modal">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3 id="meetingModalTitle">Create Meeting</h3>
+      <button class="close" onclick="closeModal('meetingModal')">×</button>
+    </div>
+
+    <input type="hidden" id="meetingEditId">
+
+    <div class="field">
+      <label>Meeting Topic</label>
+      <input id="meetingTopic" placeholder="Example: Monthly Committee Meeting">
+    </div>
+
+    <div class="grid-2">
+
+      <div class="field">
+        <label>Date</label>
+        <input id="meetingDate" type="date">
+      </div>
+
+      <div class="field">
+        <label>Meeting Start Time</label>
+        <input id="meetingTime" type="time">
+      </div>
+
+    </div>
+
+    <div class="field">
+      <label>Available Members</label>
+      <div id="meetingMemberChecks"></div>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="saveMeeting()">Save Meeting</button>
+      <button class="btn" onclick="closeModal('meetingModal')">Cancel</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- SESSION MODAL -->
+
+<div id="sessionModal" class="modal">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3>Create Breaking Pad Session</h3>
+      <button class="close" onclick="closeModal('sessionModal')">×</button>
+    </div>
+
+    <input type="hidden" id="sessionEditId">
+
+    <div class="field">
+      <label>Session Name</label>
+      <input id="sessionName" placeholder="Example: DIUBS Breaking Pad #01">
+    </div>
+
+    <div class="grid-2">
+
+      <div class="field">
+        <label>Session Duration</label>
+        <select id="sessionDuration" onchange="updateSessionStructure()">
+          <option value="3">3 Hours</option>
+          <option value="6">6 Hours</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Maximum Bookings</label>
+        <input id="sessionCapacity" type="number" min="1" value="20">
+      </div>
+
+    </div>
+
+    <div class="grid-2">
+
+      <div class="field">
+        <label>Date</label>
+        <input id="sessionDate" type="date">
+      </div>
+
+      <div class="field">
+        <label>Start Time</label>
+        <input id="sessionTime" type="time">
+      </div>
+
+    </div>
+
+    <div id="sessionStructurePreview"></div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="saveSession()">Create Session</button>
+      <button class="btn" onclick="closeModal('sessionModal')">Cancel</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- SESSION DETAIL MODAL -->
+
+<div id="sessionDetailModal" class="modal">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3 id="detailSessionTitle">Session</h3>
+      <button class="close" onclick="closeModal('sessionDetailModal')">×</button>
+    </div>
+
+    <div id="sessionDetailContent"></div>
+
+  </div>
+
+</div>
+
+
+<!-- BOOKING MODAL -->
+
+<div id="bookingModal" class="modal">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3>Book Breaking Pad Session</h3>
+      <button class="close" onclick="closeModal('bookingModal')">×</button>
+    </div>
+
+    <input type="hidden" id="bookingSessionId">
+
+    <div class="field">
+      <label>Name</label>
+      <input id="bookingName" readonly>
+    </div>
+
+    <div class="field">
+      <label>Phone</label>
+      <input id="bookingPhone" readonly>
+    </div>
+
+    <div class="field">
+      <label>Payment Method</label>
+      <select id="bookingPaymentMethod">
+        <option value="cash">Cash</option>
+        <option value="bkash">bKash</option>
+        <option value="nagad">Nagad</option>
+        <option value="bank">Bank</option>
+      </select>
+    </div>
+
+    <div id="paymentInstructions" class="info" style="margin-bottom:12px"></div>
+
+    <div class="field">
+      <label>Transaction ID (Online Payment Only)</label>
+      <input id="bookingTransactionId" placeholder="Leave blank for cash">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="submitBooking()">Confirm Booking</button>
+      <button class="btn" onclick="closeModal('bookingModal')">Cancel</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MEMBER MODAL -->
+
+<div id="memberModal" class="modal">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3 id="memberModalTitle">Add Member</h3>
+      <button class="close" onclick="closeModal('memberModal')">×</button>
+    </div>
+
+    <input type="hidden" id="memberEditId">
+
+    <div class="field">
+      <label>Name</label>
+      <input id="memberName">
+    </div>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="memberEmail" type="email">
+    </div>
+
+    <div class="field">
+      <label>Phone</label>
+      <input id="memberPhone">
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="saveMember()">Save</button>
+      <button class="btn" onclick="closeModal('memberModal')">Cancel</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- TAKER MODAL -->
+
+<div id="takerModal" class="modal">
+
+  <div class="modal-card">
+
+    <div class="modal-header">
+      <h3>Give Attendance Permission</h3>
+      <button class="close" onclick="closeModal('takerModal')">×</button>
+    </div>
+
+    <div class="field">
+      <label>Member</label>
+      <select id="takerMember"></select>
+    </div>
+
+    <div class="actions">
+      <button class="btn btn-primary" onclick="saveTaker()">Give Permission</button>
+      <button class="btn" onclick="closeModal('takerModal')">Cancel</button>
+    </div>
+
+  </div>
+
+</div>
+
+
+<div id="toast" class="toast"></div>
+
+</div>
+
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
+
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  doc,
+  addDoc,
+  setDoc,
+  getDoc,
+  getDocs,
+  updateDoc,
+  deleteDoc,
+  query,
+  where,
+  orderBy,
+  serverTimestamp
+} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js";
+
+
 /* ============================================================
-   DIUBS V1
-   Two independent modules:
-   1. Meeting Attendance
-   2. Breaking Pad Session
-   Data is stored locally for V1.
-============================================================ */
+   FIREBASE CONFIG
+   ============================================================ */
 
-/* =========================
-   STORAGE
-========================= */
-
-const STORAGE_KEY = "DIUBS_V1_DATABASE";
-
-const defaultDB = {
-  settings:{
-    organizerName:"DIUBS Organizer",
-    attendancePermissions:[],
-    paymentMethods:{
-      bkash:"",
-      nagad:"",
-      bank:"",
-      cash:false
-    }
-  },
-
-  members:[
-    {id:"m1",name:"Rahim Ahmed",roles:["Vocal","Guitar"]},
-    {id:"m2",name:"Karim Hasan",roles:["Guitar"]},
-    {id:"m3",name:"Shamim Islam",roles:["Drums"]},
-    {id:"m4",name:"Fahim Rahman",roles:["Bass","Guitar"]},
-    {id:"m5",name:"Nabil Khan",roles:["Keyboard","Vocal"]}
-  ],
-
-  meetings:[],
-
-  sessions:[]
+const firebaseConfig = {
+  apiKey: "AIzaSyDLkJOya9JZ_qO0NCmQQ-Pct2bhgJK6n6Y",
+  authDomain: "diubs-management.firebaseapp.com",
+  projectId: "diubs-management",
+  storageBucket: "diubs-management.firebasestorage.app",
+  messagingSenderId: "470068715284",
+  appId: "1:470068715284:web:68de21f02966fe35606c01",
+  measurementId: "G-7397J22EPF"
 };
 
-function loadDB(){
-  try{
-    const data=localStorage.getItem(STORAGE_KEY);
-    if(!data){
-      localStorage.setItem(STORAGE_KEY,JSON.stringify(defaultDB));
-      return structuredClone(defaultDB);
-    }
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
 
-    const parsed=JSON.parse(data);
 
-    return {
-      ...structuredClone(defaultDB),
-      ...parsed,
-      settings:{
-        ...structuredClone(defaultDB.settings),
-        ...(parsed.settings||{}),
-        paymentMethods:{
-          ...structuredClone(defaultDB.settings.paymentMethods),
-          ...(parsed.settings?.paymentMethods||{})
-        }
-      }
-    };
-  }catch(e){
-    console.error(e);
-    return structuredClone(defaultDB);
-  }
-}
+/* ============================================================
+   GLOBAL STATE
+   ============================================================ */
 
-let db=loadDB();
+let currentUser = null;
+let currentProfile = null;
 
-function saveDB(){
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(db));
-}
+let members = [];
+let meetings = [];
+let sessions = [];
+let bookings = [];
+let payments = [];
+let settingsData = {};
+let attendanceTakers = [];
 
-function uid(prefix="id"){
-  return prefix+"_"+Date.now()+"_"+Math.random().toString(36).slice(2,8);
-}
 
-function escapeHTML(value){
-  return String(value??"")
+/* ============================================================
+   HELPERS
+   ============================================================ */
+
+const $ = id => document.getElementById(id);
+
+function escapeHtml(value){
+  return String(value ?? "")
     .replaceAll("&","&amp;")
     .replaceAll("<","&lt;")
     .replaceAll(">","&gt;")
@@ -753,2721 +1377,2992 @@ function escapeHTML(value){
     .replaceAll("'","&#039;");
 }
 
-function nowLocalInput(){
-  const d=new Date();
-  const pad=n=>String(n).padStart(2,"0");
-  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-}
-
-function formatDateTime(value){
-  if(!value) return "—";
-  const d=new Date(value);
-  if(Number.isNaN(d.getTime())) return value;
-
-  return d.toLocaleString([],{
-    dateStyle:"medium",
-    timeStyle:"short"
-  });
-}
-
-function formatTime(value){
-  if(!value) return "—";
-
-  const d=new Date(value);
-  if(Number.isNaN(d.getTime())) return value;
-
-  return d.toLocaleTimeString([],{
-    hour:"2-digit",
-    minute:"2-digit"
-  });
-}
-
-function minutesBetween(a,b){
-  const x=new Date(a).getTime();
-  const y=new Date(b).getTime();
-
-  if(Number.isNaN(x)||Number.isNaN(y)) return 0;
-
-  return Math.max(0,Math.round((y-x)/60000));
-}
-
-function minutesText(minutes){
-  const h=Math.floor(minutes/60);
-  const m=minutes%60;
-
-  if(h) return `${h}h ${m}m`;
-  return `${m}m`;
-}
-
-/* =========================
-   APPLICATION STATE
-========================= */
-
-let currentPage="home";
-let currentMode="member";
-let currentMeetingId=null;
-let currentSessionId=null;
-
-/* =========================
-   APP SHELL
-========================= */
-
-function renderApp(){
-  document.getElementById("app").innerHTML=`
-
-    <header class="header">
-      <div class="brand">
-        <div class="brand-mark">♫</div>
-
-        <div class="brand-text">
-          <small>DAFFODIL INTERNATIONAL UNIVERSITY</small>
-          <strong>BAND SOCIETY</strong>
-        </div>
-      </div>
-
-      <div class="header-right">
-        <span class="role-badge">
-          ${currentMode==="organizer"?"Organizer":"Member"}
-        </span>
-
-        <button class="btn btn-small"
-          onclick="toggleMode()">
-          Switch Mode
-        </button>
-      </div>
-    </header>
-
-    <nav class="nav">
-
-      <button class="${currentPage==="home"?"active":""}"
-        onclick="goPage('home')">
-        Home
-      </button>
-
-      <button class="${currentPage==="attendance"?"active":""}"
-        onclick="goPage('attendance')">
-        📝 Meeting Attendance
-      </button>
-
-      <button class="${currentPage==="breaking"?"active":""}"
-        onclick="goPage('breaking')">
-        🎸 Breaking Pad
-      </button>
-
-      ${
-        currentMode==="organizer"
-        ?
-        `
-        <button class="${currentPage==="admin"?"active":""}"
-          onclick="goPage('admin')">
-          ⚙ Organizer Panel
-        </button>
-        `
-        :""
-      }
-
-    </nav>
-
-    <main class="container" id="page"></main>
-
-    <footer class="footer">
-      DIUBS Band Society • V1 Demo
-    </footer>
-  `;
-
-  renderPage();
-}
-
-function goPage(page){
-  currentPage=page;
-  renderApp();
-}
-
-function toggleMode(){
-  currentMode=currentMode==="organizer"?"member":"organizer";
-  renderApp();
-}
-
-/* =========================
-   HOME
-========================= */
-
-function renderPage(){
-
-  const page=document.getElementById("page");
-
-  if(currentPage==="home"){
-    renderHome(page);
-  }
-
-  if(currentPage==="attendance"){
-    renderAttendance(page);
-  }
-
-  if(currentPage==="breaking"){
-    renderBreaking(page);
-  }
-
-  if(currentPage==="admin"){
-    renderAdmin(page);
-  }
-}
-
-function renderHome(page){
-
-  page.innerHTML=`
-
-    <div class="page-title">
-      <h1>DIUBS Band Society</h1>
-      <p>Music. Community. Performance.</p>
-    </div>
-
-    <div class="grid grid-2">
-
-      <div class="card">
-        <h2>📝 Meeting Attendance</h2>
-
-        <p style="color:#999">
-          Create DIUBS meetings, take batch attendance,
-          record late arrivals and manage attendance history.
-        </p>
-
-        <button class="btn btn-primary"
-          onclick="goPage('attendance')">
-          Open Attendance
-        </button>
-      </div>
-
-      <div class="card">
-        <h2>🎸 Breaking Pad Session</h2>
-
-        <p style="color:#999">
-          Manage practice sessions, songs, musicians,
-          performance combinations and payments.
-        </p>
-
-        <button class="btn btn-primary"
-          onclick="goPage('breaking')">
-          Open Breaking Pad
-        </button>
-      </div>
-
-    </div>
-
-    <div style="height:20px"></div>
-
-    <div class="grid grid-3">
-
-      <div class="stat">
-        <div class="number">${db.members.length}</div>
-        <div class="label">Members</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">${db.meetings.length}</div>
-        <div class="label">Meetings</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">${db.sessions.length}</div>
-        <div class="label">Breaking Pad Sessions</div>
-      </div>
-
-    </div>
-  `;
-}
-
-/* ============================================================
-   ATTENDANCE
-============================================================ */
-
-function renderAttendance(page){
-
-  const activeMeetings=db.meetings.filter(m=>m.status==="active");
-  const finished=db.meetings.filter(m=>m.status!=="active");
-
-  if(currentMeetingId){
-    const meeting=db.meetings.find(m=>m.id===currentMeetingId);
-
-    if(meeting){
-      renderAttendanceMeeting(page,meeting);
-      return;
-    }
-  }
-
-  page.innerHTML=`
-
-    <div class="page-title">
-      <h1>Meeting Attendance</h1>
-      <p>Separate DIUBS meeting attendance system.</p>
-    </div>
-
-    ${
-      currentMode==="organizer"
-      ?
-      `
-      <div class="section">
-        <button class="btn btn-primary"
-          onclick="openMeetingModal()">
-          + Create Meeting
-        </button>
-      </div>
-      `
-      :""
-    }
-
-    ${
-      activeMeetings.length
-      ?
-      `
-      <div class="section">
-        <h2>Active Meetings</h2>
-
-        <div class="grid grid-2">
-          ${activeMeetings.map(meetingCard).join("")}
-        </div>
-      </div>
-      `
-      :
-      `
-      <div class="card empty">
-        <div class="empty-icon">📝</div>
-        <strong>No active meeting</strong>
-        ${
-          currentMode==="organizer"
-          ?"Create a meeting to start taking attendance."
-          :"No meeting is currently available."
-        }
-      </div>
-      `
-    }
-
-    <div style="height:25px"></div>
-
-    <div class="section">
-      <h2>Meeting History</h2>
-
-      ${
-        finished.length
-        ?
-        `<div class="grid grid-2">
-          ${finished.slice().reverse().map(meetingCard).join("")}
-        </div>`
-        :
-        `
-        <div class="card empty">
-          <div class="empty-icon">📅</div>
-          <strong>No meeting history yet</strong>
-        </div>
-        `
-      }
-    </div>
-  `;
-}
-
-function meetingCard(meeting){
-
-  const attendance=meeting.attendance||[];
-
-  return `
-    <div class="card">
-
-      <div style="display:flex;justify-content:space-between;gap:10px">
-        <div>
-          <h3>${escapeHTML(meeting.topic)}</h3>
-
-          <div style="color:#888;font-size:12px">
-            ${formatDateTime(meeting.startedAt)}
-          </div>
-        </div>
-
-        ${
-          meeting.status==="active"
-          ? `<span class="badge badge-green">ACTIVE</span>`
-          : `<span class="badge">FINISHED</span>`
-        }
-      </div>
-
-      <div style="margin:15px 0;color:#aaa;font-size:13px">
-        Present: <strong>${attendance.length}</strong>
-        ${
-          meeting.endedAt
-          ?
-          ` • Duration:
-          <strong>${minutesText(minutesBetween(meeting.startedAt,meeting.endedAt))}</strong>`
-          :""
-        }
-      </div>
-
-      <div class="btn-row">
-
-        <button class="btn btn-primary btn-small"
-          onclick="openMeeting('${meeting.id}')">
-          ${meeting.status==="active"?"Take Attendance":"View Attendance"}
-        </button>
-
-        ${
-          currentMode==="organizer"
-          ?
-          `
-          <button class="btn btn-small"
-            onclick="editMeeting('${meeting.id}')">
-            Edit
-          </button>
-
-          <button class="btn btn-danger btn-small"
-            onclick="deleteMeeting('${meeting.id}')">
-            Delete
-          </button>
-          `
-          :""
-        }
-
-      </div>
-
-    </div>
-  `;
-}
-
-function openMeeting(id){
-  currentMeetingId=id;
-  renderApp();
-}
-
-function closeMeeting(){
-  currentMeetingId=null;
-  renderApp();
-}
-
-function renderAttendanceMeeting(page,meeting){
-
-  const attendance=meeting.attendance||[];
-
-  page.innerHTML=`
-
-    <div class="page-title">
-
-      <button class="btn btn-small"
-        onclick="closeMeeting()">
-        ← Back
-      </button>
-
-      <div style="height:15px"></div>
-
-      <h1>${escapeHTML(meeting.topic)}</h1>
-
-      <p>
-        Started:
-        <strong>${formatDateTime(meeting.startedAt)}</strong>
-
-        ${
-          meeting.endedAt
-          ?
-          ` • Ended:
-          <strong>${formatDateTime(meeting.endedAt)}</strong>`
-          :""
-        }
-      </p>
-
-    </div>
-
-    <div class="grid grid-3">
-
-      <div class="stat">
-        <div class="number">${attendance.length}</div>
-        <div class="label">Present</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">
-          ${meeting.endedAt
-            ?minutesText(minutesBetween(meeting.startedAt,meeting.endedAt))
-            :"Running"}
-        </div>
-        <div class="label">Meeting Duration</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">
-          ${new Date(meeting.startedAt).toLocaleTimeString([],{
-            hour:"2-digit",minute:"2-digit"
-          })}
-        </div>
-        <div class="label">Meeting Start</div>
-      </div>
-
-    </div>
-
-    <div style="height:20px"></div>
-
-    ${
-      meeting.status==="active" && currentMode==="organizer"
-      ?
-      renderAttendanceControls(meeting)
-      :""
-    }
-
-    <div style="height:20px"></div>
-
-    <div class="card">
-
-      <div style="display:flex;justify-content:space-between;align-items:center;gap:10px">
-
-        <div>
-          <h2>Attendance Records</h2>
-          <p style="color:#777;font-size:12px">
-            Each batch is recorded using the actual attendance time.
-          </p>
-        </div>
-
-        ${
-          currentMode==="organizer"
-          ?
-          `
-          <button class="btn btn-danger btn-small"
-            onclick="deleteMeeting('${meeting.id}')">
-            Delete Meeting
-          </button>
-          `
-          :""
-        }
-
-      </div>
-
-      ${
-        attendance.length
-        ?
-        `
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Member</th>
-                <th>Present Time</th>
-                <th>Late</th>
-                ${
-                  currentMode==="organizer"
-                  ?"<th>Action</th>"
-                  :""
-                }
-              </tr>
-            </thead>
-
-            <tbody>
-
-              ${attendance
-                .slice()
-                .sort((a,b)=>new Date(a.time)-new Date(b.time))
-                .map(a=>{
-
-                  const late=minutesBetween(
-                    meeting.startedAt,
-                    a.time
-                  );
-
-                  return `
-                    <tr>
-                      <td>
-                        <strong>${escapeHTML(a.name)}</strong>
-                      </td>
-
-                      <td>${formatTime(a.time)}</td>
-
-                      <td>
-                        ${
-                          late>0
-                          ?`<span class="badge badge-yellow">${late} min late</span>`
-                          :`<span class="badge badge-green">On time</span>`
-                        }
-                      </td>
-
-                      ${
-                        currentMode==="organizer"
-                        ?
-                        `
-                        <td>
-                          <button class="btn btn-small"
-                            onclick="editAttendance('${meeting.id}','${a.id}')">
-                            Edit
-                          </button>
-
-                          <button class="btn btn-danger btn-small"
-                            onclick="deleteAttendance('${meeting.id}','${a.id}')">
-                            Delete
-                          </button>
-                        </td>
-                        `
-                        :""
-                      }
-
-                    </tr>
-                  `;
-                }).join("")}
-
-            </tbody>
-          </table>
-        </div>
-        `
-        :
-        `
-        <div class="empty">
-          <div class="empty-icon">👥</div>
-          <strong>No one has been marked present yet.</strong>
-        </div>
-        `
-      }
-
-    </div>
-
-    ${
-      meeting.status==="active" && currentMode==="organizer"
-      ?
-      `
-      <div style="height:20px"></div>
-
-      <div class="card">
-
-        <h3>Meeting Control</h3>
-
-        <button class="btn btn-danger"
-          onclick="endMeeting('${meeting.id}')">
-          End Meeting
-        </button>
-
-      </div>
-      `
-      :""
-    }
-
-  `;
-}
-
-function renderAttendanceControls(meeting){
-
-  const presentIds=new Set(
-    (meeting.attendance||[])
-      .filter(a=>a.memberId)
-      .map(a=>a.memberId)
-  );
-
-  const available=meeting.available||[];
-
-  return `
-
-    <div class="card">
-
-      <h2>Take Attendance</h2>
-
-      <p style="color:#777;font-size:12px">
-        Select everyone who is currently present, then click
-        <strong>Mark Selected Present</strong>.
-        All selected people receive the same timestamp.
-      </p>
-
-      ${
-        available.length
-        ?
-        `
-        <div class="member-list">
-
-          ${available.map(member=>{
-
-            const isPresent=presentIds.has(member.id);
-
-            return `
-              <div class="member-row ${isPresent?"present":""}">
-
-                <div class="member-info">
-                  <div class="member-name">
-                    ${escapeHTML(member.name)}
-                  </div>
-
-                  <div class="member-meta">
-                    ${
-                      member.roles?.join(" • ")||"Member"
-                    }
-                  </div>
-
-                  ${
-                    isPresent
-                    ?
-                    `
-                    <div class="present-time">
-                      ✓ Present at
-                      ${formatTime(
-                        meeting.attendance.find(a=>a.memberId===member.id)?.time
-                      )}
-                    </div>
-                    `
-                    :""
-                  }
-                </div>
-
-                ${
-                  !isPresent
-                  ?
-                  `
-                  <input
-                    type="checkbox"
-                    style="width:20px;height:20px"
-                    class="attendance-check"
-                    data-member-id="${member.id}">
-                  `
-                  :
-                  `<span class="badge badge-green">PRESENT</span>`
-                }
-
-              </div>
-            `;
-          }).join("")}
-
-        </div>
-
-        <div style="height:15px"></div>
-
-        <button class="btn btn-primary"
-          onclick="markSelectedPresent('${meeting.id}')">
-          ✓ Mark Selected Present
-        </button>
-
-        `
-        :
-        `
-        <div class="empty">
-          <strong>No available members selected.</strong>
-        </div>
-        `
-      }
-
-      <div style="height:20px"></div>
-
-      <h3>Late Arrival / Add Person</h3>
-
-      <div class="grid grid-2">
-
-        <div>
-          <label>Type member name</label>
-          <input id="lateMemberName"
-            placeholder="Enter member name">
-        </div>
-
-        <div style="display:flex;align-items:end">
-          <button class="btn btn-warning"
-            onclick="markLateMember('${meeting.id}')">
-            Add Present Now
-          </button>
-        </div>
-
-      </div>
-
-    </div>
-  `;
-}
-
-function openMeetingModal(editId=null){
-
-  const meeting=editId
-    ?db.meetings.find(m=>m.id===editId)
-    :null;
-
-  showModal(`
-    <div class="modal-head">
-      <h2>${meeting?"Edit Meeting":"Create Meeting"}</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-
-    <div class="form-group">
-      <label>Meeting Topic</label>
-      <input id="meetingTopic"
-        value="${escapeHTML(meeting?.topic||"")}"
-        placeholder="Weekly General Meeting">
-    </div>
-
-    <div class="form-group">
-      <label>Meeting Start</label>
-      <input type="datetime-local"
-        id="meetingStart"
-        value="${meeting
-          ?toDateTimeLocal(meeting.startedAt)
-          :nowLocalInput()}">
-    </div>
-
-    <div class="form-group">
-      <label>Available Members</label>
-
-      <div class="member-list">
-
-        ${db.members.map(m=>{
-
-          const checked=meeting?.available?.some(x=>x.id===m.id);
-
-          return `
-            <label class="member-row" style="cursor:pointer">
-
-              <span>
-                <strong>${escapeHTML(m.name)}</strong>
-                <small style="display:block;color:#777">
-                  ${m.roles.join(" • ")}
-                </small>
-              </span>
-
-              <input
-                type="checkbox"
-                class="available-member"
-                value="${m.id}"
-                ${checked?"checked":""}
-                style="width:20px">
-            </label>
-          `;
-        }).join("")}
-
-      </div>
-    </div>
-
-    <div class="btn-row">
-
-      <button class="btn btn-primary"
-        onclick="saveMeetingForm('${editId||""}')">
-        Save Meeting
-      </button>
-
-      <button class="btn"
-        onclick="closeModal()">
-        Cancel
-      </button>
-
-    </div>
-  `);
-}
-
-function toDateTimeLocal(value){
-  const d=new Date(value);
-  if(Number.isNaN(d.getTime())) return "";
-
-  const pad=n=>String(n).padStart(2,"0");
-
-  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`;
-}
-
-function saveMeetingForm(editId){
-
-  const topic=document.getElementById("meetingTopic").value.trim();
-  const start=document.getElementById("meetingStart").value;
-
-  if(!topic){
-    alert("Please enter the meeting topic.");
-    return;
-  }
-
-  if(!start){
-    alert("Please select the meeting start time.");
-    return;
-  }
-
-  const selectedIds=[
-    ...document.querySelectorAll(".available-member:checked")
-  ].map(x=>x.value);
-
-  const available=selectedIds
-    .map(id=>db.members.find(m=>m.id===id))
-    .filter(Boolean);
-
-  if(editId){
-
-    const meeting=db.meetings.find(m=>m.id===editId);
-
-    if(!meeting) return;
-
-    meeting.topic=topic;
-    meeting.startedAt=new Date(start).toISOString();
-    meeting.available=available;
-
-  }else{
-
-    db.meetings.push({
-      id:uid("meeting"),
-      topic,
-      startedAt:new Date(start).toISOString(),
-      endedAt:null,
-      status:"active",
-      available,
-      attendance:[]
-    });
-
-  }
-
-  saveDB();
-  closeModal();
-
-  renderApp();
-}
-
-function editMeeting(id){
-  openMeetingModal(id);
-}
-
-function deleteMeeting(id){
-
-  const meeting=db.meetings.find(m=>m.id===id);
-
-  if(!meeting) return;
-
-  if(!confirm(
-    `Delete "${meeting.topic}" and all its attendance records?`
-  )) return;
-
-  db.meetings=db.meetings.filter(m=>m.id!==id);
-
-  if(currentMeetingId===id){
-    currentMeetingId=null;
-  }
-
-  saveDB();
-  renderApp();
-}
-
-function markSelectedPresent(meetingId){
-
-  const meeting=db.meetings.find(m=>m.id===meetingId);
-
-  if(!meeting||meeting.status!=="active") return;
-
-  const ids=[
-    ...document.querySelectorAll(".attendance-check:checked")
-  ].map(x=>x.dataset.memberId);
-
-  if(!ids.length){
-    alert("Select at least one person.");
-    return;
-  }
-
-  /* IMPORTANT:
-     One timestamp for the entire selected batch.
-  */
-
-  const timestamp=new Date().toISOString();
-
-  ids.forEach(memberId=>{
-
-    if(meeting.attendance.some(a=>a.memberId===memberId)){
-      return;
-    }
-
-    const member=db.members.find(m=>m.id===memberId);
-
-    if(!member) return;
-
-    meeting.attendance.push({
-      id:uid("att"),
-      memberId:member.id,
-      name:member.name,
-      time:timestamp
-    });
-
-  });
-
-  saveDB();
-  renderApp();
-}
-
-function markLateMember(meetingId){
-
-  const meeting=db.meetings.find(m=>m.id===meetingId);
-
-  if(!meeting||meeting.status!=="active") return;
-
-  const input=document.getElementById("lateMemberName");
-  const name=input.value.trim();
-
-  if(!name){
-    alert("Enter the member name.");
-    return;
-  }
-
-  const existing=meeting.attendance.some(
-    a=>a.name.toLowerCase()===name.toLowerCase()
-  );
-
-  if(existing){
-    alert("This person is already marked present.");
-    return;
-  }
-
-  meeting.attendance.push({
-    id:uid("att"),
-    memberId:null,
-    name,
-    time:new Date().toISOString()
-  });
-
-  saveDB();
-  renderApp();
-}
-
-function editAttendance(meetingId,attendanceId){
-
-  const meeting=db.meetings.find(m=>m.id===meetingId);
-  const record=meeting?.attendance.find(a=>a.id===attendanceId);
-
-  if(!record) return;
-
-  showModal(`
-    <div class="modal-head">
-      <h2>Edit Attendance</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-
-    <div class="form-group">
-      <label>Name</label>
-      <input id="editAttendanceName"
-        value="${escapeHTML(record.name)}">
-    </div>
-
-    <div class="form-group">
-      <label>Present Time</label>
-      <input id="editAttendanceTime"
-        type="datetime-local"
-        value="${toDateTimeLocal(record.time)}">
-    </div>
-
-    <button class="btn btn-primary"
-      onclick="saveAttendanceEdit('${meetingId}','${attendanceId}')">
-      Save Changes
-    </button>
-  `);
-}
-
-function saveAttendanceEdit(meetingId,attendanceId){
-
-  const meeting=db.meetings.find(m=>m.id===meetingId);
-  const record=meeting?.attendance.find(a=>a.id===attendanceId);
-
-  if(!record) return;
-
-  const name=document.getElementById("editAttendanceName").value.trim();
-  const time=document.getElementById("editAttendanceTime").value;
-
-  if(!name||!time){
-    alert("Please fill everything.");
-    return;
-  }
-
-  record.name=name;
-  record.time=new Date(time).toISOString();
-
-  saveDB();
-  closeModal();
-  renderApp();
-}
-
-function deleteAttendance(meetingId,attendanceId){
-
-  if(!confirm("Delete this attendance record?")) return;
-
-  const meeting=db.meetings.find(m=>m.id===meetingId);
-
-  if(!meeting) return;
-
-  meeting.attendance=
-    meeting.attendance.filter(a=>a.id!==attendanceId);
-
-  saveDB();
-  renderApp();
-}
-
-function endMeeting(id){
-
-  const meeting=db.meetings.find(m=>m.id===id);
-
-  if(!meeting) return;
-
-  if(!confirm("End this meeting?")) return;
-
-  meeting.endedAt=new Date().toISOString();
-  meeting.status="finished";
-
-  saveDB();
-  renderApp();
-}
-
-/* ============================================================
-   BREAKING PAD
-============================================================ */
-
-function renderBreaking(page){
-
-  if(currentSessionId){
-
-    const session=db.sessions.find(s=>s.id===currentSessionId);
-
-    if(session){
-      renderSession(page,session);
-      return;
-    }
-  }
-
-  const upcoming=db.sessions.filter(s=>s.status!=="closed");
-
-  page.innerHTML=`
-
-    <div class="page-title">
-      <h1>🎸 Breaking Pad Session</h1>
-      <p>
-        Practice. Jam. Perform. Repeat.
-      </p>
-    </div>
-
-    ${
-      currentMode==="organizer"
-      ?
-      `
-      <div class="section">
-        <button class="btn btn-primary"
-          onclick="openSessionModal()">
-          + Create Session
-        </button>
-      </div>
-      `
-      :""
-    }
-
-    ${
-      upcoming.length
-      ?
-      `
-      <div class="grid grid-2">
-        ${upcoming.map(sessionCard).join("")}
-      </div>
-      `
-      :
-      `
-      <div class="card empty">
-        <div class="empty-icon">🎸</div>
-        <strong>No Breaking Pad Session available.</strong>
-        ${
-          currentMode==="organizer"
-          ?"Create a session to begin."
-          :"New sessions will appear here when the organizer creates them."
-        }
-      </div>
-      `
-    }
-
-  `;
-}
-
-function sessionCard(session){
-
-  const capacity=session.maxSongs;
-  const used=session.songs.length;
-
-  return `
-    <div class="card">
-
-      <div style="display:flex;justify-content:space-between;gap:10px">
-
-        <div>
-          <h2>${escapeHTML(session.name)}</h2>
-
-          <div style="color:#888;font-size:12px">
-            ${formatDateTime(session.dateTime)}
-          </div>
-        </div>
-
-        <span class="badge badge-red">
-          ${session.duration} HOURS
-        </span>
-
-      </div>
-
-      <div style="margin:15px 0">
-
-        <strong>${used}</strong>
-        /
-        <strong>${capacity}</strong>
-        songs
-
-        ${
-          used>=capacity
-          ?
-          `<div class="warning">
-            ⚠ Maximum song capacity reached.
-          </div>`
-          :""
-        }
-
-      </div>
-
-      <div class="btn-row">
-
-        <button class="btn btn-primary"
-          onclick="openSession('${session.id}')">
-          Open Session
-        </button>
-
-        ${
-          currentMode==="organizer"
-          ?
-          `
-          <button class="btn btn-small"
-            onclick="editSession('${session.id}')">
-            Edit
-          </button>
-
-          <button class="btn btn-danger btn-small"
-            onclick="deleteSession('${session.id}')">
-            Delete
-          </button>
-          `
-          :""
-        }
-
-      </div>
-
-    </div>
-  `;
-}
-
-function openSession(id){
-  currentSessionId=id;
-  renderApp();
-}
-
-function closeSession(){
-  currentSessionId=null;
-  renderApp();
-}
-
-function openSessionModal(editId=null){
-
-  const session=editId
-    ?db.sessions.find(s=>s.id===editId)
-    :null;
-
-  showModal(`
-    <div class="modal-head">
-      <h2>${session?"Edit Session":"Create Breaking Pad Session"}</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-
-    <div class="form-group">
-      <label>Session Name</label>
-      <input id="sessionName"
-        value="${escapeHTML(session?.name||"Breaking Pad Session #01")}">
-    </div>
-
-    <div class="grid grid-2">
-
-      <div class="form-group">
-        <label>Date & Time</label>
-        <input id="sessionDate"
-          type="datetime-local"
-          value="${session
-            ?toDateTimeLocal(session.dateTime)
-            :nowLocalInput()}">
-      </div>
-
-      <div class="form-group">
-        <label>Duration</label>
-        <select id="sessionDuration">
-          <option value="3" ${session?.duration==3?"selected":""}>
-            3 Hours
-          </option>
-          <option value="6" ${session?.duration==6?"selected":""}>
-            6 Hours
-          </option>
-        </select>
-      </div>
-
-    </div>
-
-    <div class="form-group">
-      <label>Maximum Songs</label>
-      <input id="sessionCapacity"
-        type="number"
-        min="1"
-        value="${session?.maxSongs || (session?.duration==6?8:4)}">
-      <small style="color:#777">
-        Default: 4 songs for 3 hours / 8 songs for 6 hours.
-        Organizer can increase or decrease this.
-      </small>
-    </div>
-
-    <div class="form-group">
-      <label>Minimum Payment Per Musician (BDT)</label>
-      <input id="sessionFee"
-        type="number"
-        min="0"
-        value="${session?.fee ?? 100}">
-    </div>
-
-    <div class="form-group">
-      <label>Booking Status</label>
-      <select id="sessionStatus">
-        <option value="open" ${session?.status==="open"||!session?"selected":""}>
-          Open
-        </option>
-        <option value="closed" ${session?.status==="closed"?"selected":""}>
-          Closed
-        </option>
-      </select>
-    </div>
-
-    <button class="btn btn-primary"
-      onclick="saveSessionForm('${editId||""}')">
-      Save Session
-    </button>
-  `);
-}
-
-function saveSessionForm(editId){
-
-  const name=document.getElementById("sessionName").value.trim();
-  const date=document.getElementById("sessionDate").value;
-  const duration=Number(document.getElementById("sessionDuration").value);
-  const capacity=Number(document.getElementById("sessionCapacity").value);
-  const fee=Number(document.getElementById("sessionFee").value);
-  const status=document.getElementById("sessionStatus").value;
-
-  if(!name||!date){
-    alert("Please fill the session name and date.");
-    return;
-  }
-
-  if(capacity<1){
-    alert("Maximum songs must be at least 1.");
-    return;
-  }
-
-  if(editId){
-
-    const session=db.sessions.find(s=>s.id===editId);
-
-    if(!session) return;
-
-    session.name=name;
-    session.dateTime=new Date(date).toISOString();
-    session.duration=duration;
-    session.maxSongs=capacity;
-    session.fee=fee;
-    session.status=status;
-
-  }else{
-
-    db.sessions.push({
-      id:uid("session"),
-      name,
-      dateTime:new Date(date).toISOString(),
-      duration,
-      maxSongs:capacity,
-      fee,
-      status,
-      songs:[],
-      bookings:[],
-      performanceHistory:[]
-    });
-
-  }
-
-  saveDB();
-  closeModal();
-  renderApp();
-}
-
-function editSession(id){
-  openSessionModal(id);
-}
-
-function deleteSession(id){
-
-  const session=db.sessions.find(s=>s.id===id);
-
-  if(!session) return;
-
-  if(!confirm(
-    `Delete "${session.name}" and all its session data?`
-  )) return;
-
-  db.sessions=db.sessions.filter(s=>s.id!==id);
-
-  if(currentSessionId===id){
-    currentSessionId=null;
-  }
-
-  saveDB();
-  renderApp();
-}
-
-function renderSession(page,session){
-
-  const paymentConfigured=
-    Object.values(db.settings.paymentMethods)
-      .some(Boolean);
-
-  const totalBookings=session.bookings.length;
-
-  page.innerHTML=`
-
-    <div class="page-title">
-
-      <button class="btn btn-small"
-        onclick="closeSession()">
-        ← Back
-      </button>
-
-      <div style="height:15px"></div>
-
-      <h1>${escapeHTML(session.name)}</h1>
-
-      <p>
-        ${formatDateTime(session.dateTime)}
-        • ${session.duration} hour session
-      </p>
-
-    </div>
-
-    <div class="grid grid-4">
-
-      <div class="stat">
-        <div class="number">${session.songs.length}</div>
-        <div class="label">Songs</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">${session.maxSongs}</div>
-        <div class="label">Maximum Songs</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">${totalBookings}</div>
-        <div class="label">Bookings</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">৳${session.fee}</div>
-        <div class="label">Minimum Fee</div>
-      </div>
-
-    </div>
-
-    <div style="height:25px"></div>
-
-    ${
-      session.songs.length>=session.maxSongs
-      ?
-      `
-      <div class="warning">
-        ⚠ Maximum song capacity reached.
-        ${
-          currentMode==="organizer"
-          ?"You can increase the capacity from Edit Session."
-          :""
-        }
-      </div>
-      `
-      :""
-    }
-
-    ${
-      !paymentConfigured
-      ?
-      `
-      <div style="height:10px"></div>
-      <div class="info">
-        ${
-          currentMode==="organizer"
-          ?"Payment methods have not been configured yet."
-          :"Payment information is not available yet. The organizer has not added payment details."
-        }
-      </div>
-      `
-      :""
-    }
-
-    <div style="height:25px"></div>
-
-    <div class="grid grid-2">
-
-      <div>
-
-        <div class="card">
-
-          <div style="display:flex;justify-content:space-between;gap:10px">
-            <h2>🎵 Song Circuit</h2>
-
-            ${
-              currentMode==="organizer"
-              ?
-              `
-              <button class="btn btn-primary btn-small"
-                onclick="openSongModal('${session.id}')">
-                + Add Song
-              </button>
-              `
-              :""
-            }
-          </div>
-
-          <div style="height:10px"></div>
-
-          ${
-            session.songs.length
-            ?
-            session.songs.map(
-              song=>songCard(session,song)
-            ).join("")
-            :
-            `
-            <div class="empty">
-              <div class="empty-icon">🎵</div>
-              <strong>No songs have been added yet.</strong>
-
-              ${
-                currentMode==="organizer"
-                ?"Add songs to build the circuit."
-                :"Songs will appear here once the organizer adds them."
-              }
-            </div>
-            `
-          }
-
-        </div>
-
-      </div>
-
-      <div>
-
-        ${
-          currentMode==="organizer"
-          ?
-          `
-          <div class="card">
-
-            <h2>👥 Bookings</h2>
-
-            ${
-              session.bookings.length
-              ?
-              renderBookings(session)
-              :
-              `
-              <div class="empty">
-                <div class="empty-icon">📋</div>
-                <strong>No bookings yet.</strong>
-              </div>
-              `
-            }
-
-          </div>
-
-          <div style="height:15px"></div>
-
-          <div class="card">
-
-            <h2>🧠 Performance History</h2>
-
-            ${renderPerformanceHistory(session)}
-
-          </div>
-          `
-          :
-          `
-          <div class="card">
-
-            <h2>🎸 Join This Session</h2>
-
-            ${
-              session.status==="closed"
-              ?
-              `
-              <div class="warning">
-                Booking is currently closed.
-              </div>
-              `
-              :
-              `
-              <p style="color:#888;font-size:13px">
-                Submit your song and musician lineup to the organizer.
-              </p>
-
-              <button class="btn btn-primary"
-                onclick="openBookingModal('${session.id}')">
-                Book / Join Session
-              </button>
-              `
-            }
-
-          </div>
-
-          <div style="height:15px"></div>
-
-          ${
-            paymentConfigured
-            ?
-            `
-            <div class="card">
-              <h3>Payment Information</h3>
-              ${renderPaymentInformation()}
-            </div>
-            `
-            :""
-          }
-          `
-        }
-
-      </div>
-
-    </div>
-
-  `;
-}
-
-function songCard(session,song){
-
-  return `
-    <div class="song-card">
-
-      <div class="song-header">
-
-        <div>
-          <div class="song-title">
-            ${song.number}. ${escapeHTML(song.name)}
-          </div>
-
-          ${
-            song.genre
-            ?
-            `<span class="badge">${escapeHTML(song.genre)}</span>`
-            :""
-          }
-        </div>
-
-        ${
-          currentMode==="organizer"
-          ?
-          `
-          <div class="btn-row">
-            <button class="btn btn-small"
-              onclick="openSongModal('${session.id}','${song.id}')">
-              Edit
-            </button>
-
-            <button class="btn btn-danger btn-small"
-              onclick="deleteSong('${session.id}','${song.id}')">
-              Delete
-            </button>
-          </div>
-          `
-          :""
-        }
-
-      </div>
-
-      <div class="role-grid">
-
-        ${roleDisplay("Vocal",song.vocal)}
-        ${roleDisplay("Guitar 1",song.guitar1)}
-        ${roleDisplay("Guitar 2",song.guitar2)}
-        ${roleDisplay("Drummer",song.drummer)}
-        ${roleDisplay("Bassist",song.bassist)}
-        ${roleDisplay("Keyboardist",song.keyboardist)}
-        ${roleDisplay("Other",song.other)}
-
-      </div>
-
-      ${
-        song.warning
-        ?
-        `<div class="warning">${escapeHTML(song.warning)}</div>`
-        :""
-      }
-
-    </div>
-  `;
-}
-
-function roleDisplay(label,value){
-
-  if(!value) return "";
-
-  return `
-    <div class="role-box">
-      <strong>${label}</strong>
-      <span>${escapeHTML(value)}</span>
-    </div>
-  `;
-}
-
-/* =========================
-   SONG MODAL
-========================= */
-
-function openSongModal(sessionId,songId=null){
-
-  const session=db.sessions.find(s=>s.id===sessionId);
-
-  if(!session) return;
-
-  const song=songId
-    ?session.songs.find(s=>s.id===songId)
-    :null;
-
-  if(!song && session.songs.length>=session.maxSongs){
-    alert(
-      "Maximum song capacity has been reached. Increase the session capacity first."
-    );
-    return;
-  }
-
-  const roles=[
-    ["vocal","Vocal"],
-    ["guitar1","Guitar 1"],
-    ["guitar2","Guitar 2"],
-    ["drummer","Drummer"],
-    ["bassist","Bassist"],
-    ["keyboardist","Keyboardist"],
-    ["other","Other Instrumentalist"]
-  ];
-
-  showModal(`
-    <div class="modal-head">
-      <h2>${song?"Edit Song":"Add Song"}</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-
-    <div class="form-group">
-      <label>Song Name</label>
-      <input id="songName"
-        value="${escapeHTML(song?.name||"")}"
-        placeholder="Enter song name">
-    </div>
-
-    <div class="form-group">
-      <label>Genre</label>
-      <input id="songGenre"
-        value="${escapeHTML(song?.genre||"")}"
-        placeholder="Rock / Alternative / Grunge / Metal...">
-    </div>
-
-    <div class="info">
-      You can type a musician's name OR select an existing member.
-      A person may have multiple roles.
-    </div>
-
-    <div style="height:15px"></div>
-
-    <div class="grid grid-2">
-
-      ${roles.map(([key,label])=>{
-
-        const value=song?.[key]||"";
-
-        return `
-          <div class="form-group">
-
-            <label>${label}</label>
-
-            <input
-              list="memberNames"
-              id="song_${key}"
-              value="${escapeHTML(value)}"
-              placeholder="Type or select">
-
-          </div>
-        `;
-      }).join("")}
-
-    </div>
-
-    <datalist id="memberNames">
-      ${db.members.map(m=>
-        `<option value="${escapeHTML(m.name)}"></option>`
-      ).join("")}
-    </datalist>
-
-    <button class="btn btn-primary"
-      onclick="saveSongForm('${sessionId}','${songId||""}')">
-      Save Song
-    </button>
-  `);
-}
-
-function saveSongForm(sessionId,songId){
-
-  const session=db.sessions.find(s=>s.id===sessionId);
-
-  if(!session) return;
-
-  const name=document.getElementById("songName").value.trim();
-
-  if(!name){
-    alert("Enter a song name.");
-    return;
-  }
-
-  /* Duplicate song check */
-
-  const duplicate=session.songs.find(s=>
-    s.name.trim().toLowerCase()===name.toLowerCase() &&
-    s.id!==songId
-  );
-
-  if(duplicate){
-    alert(
-      "This song is already included in this session. The same song cannot be repeated in one session."
-    );
-    return;
-  }
-
-  const songData={
-    name,
-    genre:document.getElementById("songGenre").value.trim(),
-    vocal:document.getElementById("song_vocal").value.trim(),
-    guitar1:document.getElementById("song_guitar1").value.trim(),
-    guitar2:document.getElementById("song_guitar2").value.trim(),
-    drummer:document.getElementById("song_drummer").value.trim(),
-    bassist:document.getElementById("song_bassist").value.trim(),
-    keyboardist:document.getElementById("song_keyboardist").value.trim(),
-    other:document.getElementById("song_other").value.trim()
+function localDateTime(date = new Date()){
+  const pad = n => String(n).padStart(2,"0");
+
+  return {
+    date:
+      date.getFullYear()+"-"+
+      pad(date.getMonth()+1)+"-"+
+      pad(date.getDate()),
+
+    time:
+      pad(date.getHours())+":"+
+      pad(date.getMinutes())
   };
+}
 
-  if(songId){
+function showToast(message){
+  const t = $("toast");
+  t.textContent = message;
+  t.classList.add("show");
 
-    const song=session.songs.find(s=>s.id===songId);
+  setTimeout(()=>{
+    t.classList.remove("show");
+  },3000);
+}
 
-    if(!song) return;
+function authMessage(message,type="error"){
+  const box = $("authMessage");
+  box.textContent = message;
+  box.className = "message show "+type;
+}
 
-    Object.assign(song,songData);
+function closeModal(id){
+  $(id).classList.remove("show");
+}
+
+function openModal(id){
+  $(id).classList.add("show");
+}
+
+window.closeModal = closeModal;
+
+
+/* ============================================================
+   AUTH
+   ============================================================ */
+
+window.switchAuth = function(type){
+
+  if(type === "login"){
+    $("loginForm").classList.remove("hidden");
+    $("registerForm").classList.add("hidden");
+
+    $("loginTab").classList.add("active");
+    $("registerTab").classList.remove("active");
+  }else{
+    $("loginForm").classList.add("hidden");
+    $("registerForm").classList.remove("hidden");
+
+    $("loginTab").classList.remove("active");
+    $("registerTab").classList.add("active");
+  }
+
+  $("authMessage").className = "message";
+};
+
+
+window.registerUser = async function(){
+
+  const name = $("regName").value.trim();
+  const phone = $("regPhone").value.trim();
+  const email = $("regEmail").value.trim();
+  const password = $("regPassword").value;
+
+  if(!name || !email || !password){
+    authMessage("Name, email and password are required.");
+    return;
+  }
+
+  if(password.length < 6){
+    authMessage("Password must contain at least 6 characters.");
+    return;
+  }
+
+  try{
+
+    const credential =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    await setDoc(
+      doc(db,"users",credential.user.uid),
+      {
+        name,
+        email,
+        phone,
+        role:"member",
+        active:true,
+        createdAt:serverTimestamp()
+      }
+    );
+
+    authMessage(
+      "Account created successfully. You are now a Member.",
+      "success"
+    );
+
+  }catch(error){
+
+    authMessage(error.message);
+  }
+};
+
+
+window.loginUser = async function(){
+
+  const email = $("loginEmail").value.trim();
+  const password = $("loginPassword").value;
+
+  if(!email || !password){
+    authMessage("Enter email and password.");
+    return;
+  }
+
+  try{
+
+    await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+
+  }catch(error){
+
+    authMessage(error.message);
+  }
+};
+
+
+window.logoutUser = async function(){
+  await signOut(auth);
+};
+
+
+onAuthStateChanged(auth, async user => {
+
+  if(!user){
+
+    currentUser = null;
+    currentProfile = null;
+
+    $("authScreen").classList.remove("hidden");
+    $("mainApp").classList.add("hidden");
+
+    return;
+  }
+
+  currentUser = user;
+
+  try{
+
+    const profileSnap =
+      await getDoc(doc(db,"users",user.uid));
+
+    if(!profileSnap.exists()){
+
+      await setDoc(
+        doc(db,"users",user.uid),
+        {
+          name:user.email.split("@")[0],
+          email:user.email,
+          phone:"",
+          role:"member",
+          active:true,
+          createdAt:serverTimestamp()
+        }
+      );
+
+      currentProfile = {
+        name:user.email.split("@")[0],
+        email:user.email,
+        phone:"",
+        role:"member",
+        active:true
+      };
+
+    }else{
+
+      currentProfile = profileSnap.data();
+    }
+
+    $("authScreen").classList.add("hidden");
+    $("mainApp").classList.remove("hidden");
+
+    setupInterface();
+
+  }catch(error){
+
+    console.error(error);
+
+    authMessage(
+      "Could not load your profile: "+error.message
+    );
+  }
+
+});
+
+
+/* ============================================================
+   INTERFACE
+   ============================================================ */
+
+function setupInterface(){
+
+  $("userChip").textContent =
+    `${currentProfile.name || currentUser.email} • ${currentProfile.role}`;
+
+  if(currentProfile.role === "organizer"){
+
+    $("organizerNav").classList.remove("hidden");
+    $("memberNav").classList.add("hidden");
+
+    showPage("dashboard");
 
   }else{
 
-    session.songs.push({
-      id:uid("song"),
-      number:session.songs.length+1,
-      ...songData
-    });
+    $("organizerNav").classList.add("hidden");
+    $("memberNav").classList.remove("hidden");
 
+    showPage("memberHome");
   }
 
-  /* Record combination history */
+  loadEverything();
+}
 
-  const combination=[
-    songData.vocal,
-    songData.guitar1,
-    songData.guitar2,
-    songData.drummer,
-    songData.bassist,
-    songData.keyboardist,
-    songData.other
-  ]
-  .filter(Boolean)
-  .map(x=>x.toLowerCase().trim())
-  .sort()
-  .join("|");
 
-  const previous=session.songs.filter(s=>{
+window.toggleSidebar = function(){
+  $("sidebar").classList.toggle("open");
+};
 
-    if(songId && s.id===songId) return false;
 
-    const c=[
-      s.vocal,
-      s.guitar1,
-      s.guitar2,
-      s.drummer,
-      s.bassist,
-      s.keyboardist,
-      s.other
-    ]
-    .filter(Boolean)
-    .map(x=>x.toLowerCase().trim())
-    .sort()
-    .join("|");
+window.showPage = function(page){
 
-    return c===combination && combination;
-  });
+  document.querySelectorAll(".page")
+    .forEach(p => p.classList.remove("active"));
 
-  const target=session.songs.find(
-    s=>s.id===(songId || session.songs[session.songs.length-1]?.id)
-  );
+  const target = $("page-"+page);
 
   if(target){
-    target.warning=previous.length
-      ?"⚠ This musician combination has performed together earlier in this session."
-      :"";
+    target.classList.add("active");
   }
 
-  saveDB();
-  closeModal();
-  renderApp();
-}
+  document.querySelectorAll(".nav-btn")
+    .forEach(btn=>{
+      if(btn.dataset.page === page)
+        btn.classList.add("active");
+      else
+        btn.classList.remove("active");
+    });
 
-function deleteSong(sessionId,songId){
-
-  if(!confirm("Delete this song?")) return;
-
-  const session=db.sessions.find(s=>s.id===sessionId);
-
-  if(!session) return;
-
-  session.songs=session.songs
-    .filter(s=>s.id!==songId)
-    .map((s,i)=>({...s,number:i+1}));
-
-  saveDB();
-  renderApp();
-}
-
-/* ============================================================
-   BOOKING
-============================================================ */
-
-function openBookingModal(sessionId){
-
-  const session=db.sessions.find(s=>s.id===sessionId);
-
-  if(!session) return;
-
-  showModal(`
-    <div class="modal-head">
-      <h2>Book Breaking Pad Session</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
-
-    <div class="form-group">
-      <label>Your Name</label>
-      <input id="bookName"
-        placeholder="Enter your name">
-    </div>
-
-    <div class="form-group">
-      <label>Your Role</label>
-      <input id="bookRole"
-        placeholder="Vocal / Guitar / Drums / etc.">
-    </div>
-
-    <div class="form-group">
-      <label>Phone Number</label>
-      <input id="bookPhone"
-        placeholder="01XXXXXXXXX">
-    </div>
-
-    <div class="form-group">
-      <label>Song Name</label>
-      <input
-        id="bookSong"
-        list="availableSongs"
-        placeholder="Choose or type song">
-
-      <datalist id="availableSongs">
-        ${session.songs.map(s=>
-          `<option value="${escapeHTML(s.name)}"></option>`
-        ).join("")}
-      </datalist>
-    </div>
-
-    <h3>Musicians</h3>
-
-    <div class="info">
-      Type a name or select an existing DIUBS member.
-      The same person may have multiple roles.
-    </div>
-
-    <div style="height:12px"></div>
-
-    <div class="grid grid-2">
-
-      ${[
-        ["bookVocal","Vocal"],
-        ["bookGuitar1","Guitar 1"],
-        ["bookGuitar2","Guitar 2"],
-        ["bookDrummer","Drummer"],
-        ["bookBassist","Bassist"],
-        ["bookKeyboard","Keyboardist"],
-        ["bookOther","Other"]
-      ].map(([id,label])=>`
-        <div class="form-group">
-          <label>${label}</label>
-          <input id="${id}"
-            list="bookingMembers"
-            placeholder="Type or select">
-        </div>
-      `).join("")}
-
-    </div>
-
-    <datalist id="bookingMembers">
-      ${db.members.map(m=>
-        `<option value="${escapeHTML(m.name)}"></option>`
-      ).join("")}
-    </datalist>
-
-    <h3>Payment</h3>
-
-    ${
-      Object.values(db.settings.paymentMethods).some(Boolean)
-      ?
-      `
-      <div class="form-group">
-        <label>Payment Method</label>
-
-        <select id="bookPaymentMethod">
-
-          ${
-            db.settings.paymentMethods.bkash
-            ?`<option value="bKash">bKash</option>`
-            :""
-          }
-
-          ${
-            db.settings.paymentMethods.nagad
-            ?`<option value="Nagad">Nagad</option>`
-            :""
-          }
-
-          ${
-            db.settings.paymentMethods.bank
-            ?`<option value="Bank">Bank</option>`
-            :""
-          }
-
-          ${
-            db.settings.paymentMethods.cash
-            ?`<option value="Cash">Cash</option>`
-            :""
-          }
-
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label>Transaction ID (online payments only)</label>
-        <input id="bookTransaction"
-          placeholder="Enter transaction ID">
-      </div>
-      `
-      :
-      `
-      <div class="info">
-        Payment information is not available yet.
-        The organizer has not configured a payment method.
-      </div>
-      `
-    }
-
-    <button class="btn btn-primary"
-      onclick="submitBooking('${sessionId}')">
-      Submit Booking
-    </button>
-
-  `);
-}
-
-function submitBooking(sessionId){
-
-  const session=db.sessions.find(s=>s.id===sessionId);
-
-  if(!session) return;
-
-  const name=document.getElementById("bookName").value.trim();
-  const role=document.getElementById("bookRole").value.trim();
-  const phone=document.getElementById("bookPhone").value.trim();
-  const song=document.getElementById("bookSong").value.trim();
-
-  if(!name||!role||!phone||!song){
-    alert("Please fill name, role, phone and song.");
-    return;
-  }
-
-  const paymentSelect=document.getElementById("bookPaymentMethod");
-
-  const paymentMethod=
-    paymentSelect
-    ?paymentSelect.value
-    :"Not configured";
-
-  const transaction=document.getElementById("bookTransaction");
-
-  const booking={
-    id:uid("booking"),
-    name,
-    role,
-    phone,
-    song,
-    musicians:{
-      vocal:document.getElementById("bookVocal").value.trim(),
-      guitar1:document.getElementById("bookGuitar1").value.trim(),
-      guitar2:document.getElementById("bookGuitar2").value.trim(),
-      drummer:document.getElementById("bookDrummer").value.trim(),
-      bassist:document.getElementById("bookBassist").value.trim(),
-      keyboardist:document.getElementById("bookKeyboard").value.trim(),
-      other:document.getElementById("bookOther").value.trim()
-    },
-    paymentMethod,
-    transactionId:transaction?.value.trim()||"",
-    paymentStatus:"pending",
-    createdAt:new Date().toISOString()
+  const names = {
+    dashboard:"Organizer Dashboard",
+    meetings:"Meetings",
+    attendance:"Attendance",
+    breaking:"Breaking Pad",
+    bookings:"Bookings",
+    payments:"Payments",
+    members:"Members",
+    settings:"Settings",
+    memberHome:"DIUBS Home",
+    memberMeetings:"Meetings",
+    memberAttendance:"My Attendance",
+    memberBreaking:"Breaking Pad",
+    memberBookings:"My Bookings",
+    profile:"My Profile"
   };
 
-  session.bookings.push(booking);
+  $("topTitle").textContent = names[page] || "DIUBS";
 
-  /* Store performance combination for organizer */
+  $("sidebar").classList.remove("open");
 
-  const combination=[
-    booking.musicians.vocal,
-    booking.musicians.guitar1,
-    booking.musicians.guitar2,
-    booking.musicians.drummer,
-    booking.musicians.bassist,
-    booking.musicians.keyboardist,
-    booking.musicians.other
-  ]
-  .filter(Boolean)
-  .sort((a,b)=>a.localeCompare(b))
-  .join(" + ");
+  if(page === "dashboard") renderDashboard();
+  if(page === "meetings") renderMeetings();
+  if(page === "attendance") populateAttendanceMeetingSelect();
+  if(page === "breaking") renderSessions();
+  if(page === "bookings") renderAllBookings();
+  if(page === "payments") renderPayments();
+  if(page === "members") renderMembers();
+  if(page === "settings") renderSettings();
 
-  if(combination){
-    session.performanceHistory.push({
-      id:uid("history"),
-      combination,
-      song,
-      createdAt:new Date().toISOString()
-    });
+  if(page === "memberHome") renderMemberHome();
+  if(page === "memberMeetings") renderMemberMeetings();
+  if(page === "memberAttendance") renderMemberAttendance();
+  if(page === "memberBreaking") renderMemberSessions();
+  if(page === "memberBookings") renderMemberBookings();
+  if(page === "profile") renderProfile();
+};
+
+
+/* ============================================================
+   LOAD DATA
+   ============================================================ */
+
+async function loadEverything(){
+
+  try{
+
+    await Promise.all([
+      loadMembers(),
+      loadMeetings(),
+      loadSessions(),
+      loadBookings(),
+      loadPayments(),
+      loadSettings(),
+      loadTakers()
+    ]);
+
+    if(currentProfile.role === "organizer"){
+      renderDashboard();
+      renderMeetings();
+      renderSessions();
+      renderMembers();
+      renderSettings();
+    }else{
+      renderMemberHome();
+    }
+
+  }catch(error){
+
+    console.error(error);
+    showToast("Database loading error.");
   }
-
-  saveDB();
-  closeModal();
-
-  alert(
-    "Booking submitted successfully. The organizer can now review and verify your payment."
-  );
-
-  renderApp();
 }
 
-function renderBookings(session){
 
-  return `
-    <div style="display:grid;gap:10px">
+async function loadMembers(){
 
-      ${session.bookings.map(b=>`
+  const snap = await getDocs(collection(db,"users"));
 
-        <div class="member-row">
-
-          <div class="member-info">
-
-            <div class="member-name">
-              ${escapeHTML(b.name)}
-            </div>
-
-            <div class="member-meta">
-              ${escapeHTML(b.role)}
-              • ${escapeHTML(b.song)}
-              • ${escapeHTML(b.phone)}
-            </div>
-
-            <div style="margin-top:6px;font-size:11px;color:#777">
-              Payment:
-              <strong>${escapeHTML(b.paymentMethod)}</strong>
-
-              ${
-                b.transactionId
-                ?` • TXN: ${escapeHTML(b.transactionId)}`
-                :""
-              }
-            </div>
-
-            <div style="margin-top:5px">
-              ${
-                b.paymentStatus==="verified"
-                ?
-                `<span class="badge badge-green">PAYMENT VERIFIED</span>`
-                :
-                `<span class="badge badge-yellow">PAYMENT PENDING</span>`
-              }
-            </div>
-
-          </div>
-
-          <div class="btn-row">
-
-            ${
-              b.paymentStatus!=="verified"
-              ?
-              `
-              <button class="btn btn-success btn-small"
-                onclick="verifyPayment('${session.id}','${b.id}')">
-                Verify
-              </button>
-              `
-              :
-              ""
-            }
-
-            <button class="btn btn-danger btn-small"
-              onclick="deleteBooking('${session.id}','${b.id}')">
-              Delete
-            </button>
-
-          </div>
-
-        </div>
-
-      `).join("")}
-
-    </div>
-  `;
+  members = snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
 }
 
-function verifyPayment(sessionId,bookingId){
 
-  const session=db.sessions.find(s=>s.id===sessionId);
-  const booking=session?.bookings.find(b=>b.id===bookingId);
+async function loadMeetings(){
 
-  if(!booking) return;
+  const snap = await getDocs(collection(db,"meetings"));
 
-  if(!confirm(
-    `Verify payment for ${booking.name}?`
-  )) return;
+  meetings = snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
 
-  booking.paymentStatus="verified";
-  booking.verifiedAt=new Date().toISOString();
-
-  saveDB();
-  renderApp();
-
-  alert(
-    "Payment verified. In V2 this action can trigger an automatic WhatsApp notification."
+  meetings.sort((a,b)=>
+    `${a.date||""} ${a.startTime||""}`
+      .localeCompare(`${b.date||""} ${b.startTime||""}`)
   );
 }
 
-function deleteBooking(sessionId,bookingId){
 
-  if(!confirm("Delete this booking?")) return;
+async function loadSessions(){
 
-  const session=db.sessions.find(s=>s.id===sessionId);
+  const snap = await getDocs(collection(db,"breakingSessions"));
 
-  if(!session) return;
+  sessions = snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
 
-  session.bookings=
-    session.bookings.filter(b=>b.id!==bookingId);
-
-  saveDB();
-  renderApp();
+  sessions.sort((a,b)=>
+    `${a.date||""} ${a.startTime||""}`
+      .localeCompare(`${b.date||""} ${b.startTime||""}`)
+  );
 }
 
-/* ============================================================
-   PERFORMANCE HISTORY
-============================================================ */
 
-function renderPerformanceHistory(session){
+async function loadBookings(){
 
-  if(!session.performanceHistory.length){
-    return `
-      <div class="empty">
-        <strong>No performance history yet.</strong>
-        Previous musician combinations will appear here.
-      </div>
-    `;
-  }
+  const snap = await getDocs(collection(db,"bookings"));
 
-  return `
-    <div style="display:grid;gap:9px">
-
-      ${session.performanceHistory
-        .slice()
-        .reverse()
-        .map(h=>`
-
-          <div class="role-box">
-
-            <strong>
-              ${escapeHTML(h.song)}
-            </strong>
-
-            <span>
-              ${escapeHTML(h.combination)}
-            </span>
-
-            <div style="margin-top:5px;color:#666;font-size:10px">
-              ${formatDateTime(h.createdAt)}
-            </div>
-
-          </div>
-
-        `).join("")}
-
-    </div>
-  `;
+  bookings = snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
 }
 
-/* ============================================================
-   PAYMENT INFORMATION
-============================================================ */
 
-function renderPaymentInformation(){
+async function loadPayments(){
 
-  const p=db.settings.paymentMethods;
+  const snap = await getDocs(collection(db,"payments"));
 
-  let html="";
-
-  if(p.bkash){
-    html+=`
-      <div class="role-box" style="margin-bottom:8px">
-        <strong>bKash</strong>
-        <span>${escapeHTML(p.bkash)}</span>
-      </div>
-    `;
-  }
-
-  if(p.nagad){
-    html+=`
-      <div class="role-box" style="margin-bottom:8px">
-        <strong>Nagad</strong>
-        <span>${escapeHTML(p.nagad)}</span>
-      </div>
-    `;
-  }
-
-  if(p.bank){
-    html+=`
-      <div class="role-box" style="margin-bottom:8px">
-        <strong>Bank</strong>
-        <span style="white-space:pre-line">
-          ${escapeHTML(p.bank)}
-        </span>
-      </div>
-    `;
-  }
-
-  if(p.cash){
-    html+=`
-      <div class="role-box">
-        <strong>Cash</strong>
-        <span>Cash payment accepted.</span>
-      </div>
-    `;
-  }
-
-  return html;
+  payments = snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
 }
 
+
+async function loadSettings(){
+
+  const snap = await getDoc(doc(db,"settings","general"));
+
+  settingsData =
+    snap.exists() ? snap.data() : {};
+}
+
+
+async function loadTakers(){
+
+  const snap =
+    await getDoc(doc(db,"settings","attendancePermissions"));
+
+  attendanceTakers =
+    snap.exists() ?
+    (snap.data().takers || []) :
+    [];
+}
+
+
 /* ============================================================
-   ADMIN PANEL
-============================================================ */
+   DASHBOARD
+   ============================================================ */
 
-function renderAdmin(page){
+function renderDashboard(){
 
-  if(currentMode!=="organizer"){
-    page.innerHTML=`
-      <div class="card empty">
-        <div class="empty-icon">🔒</div>
-        <strong>Organizer access required.</strong>
-      </div>
-    `;
+  $("statMembers").textContent =
+    members.filter(m=>m.role==="member").length;
+
+  $("statMeetings").textContent =
+    meetings.length;
+
+  $("statSessions").textContent =
+    sessions.length;
+
+  $("statPayments").textContent =
+    payments.filter(p=>p.status==="pending").length;
+}
+
+
+/* ============================================================
+   MEMBERS
+   ============================================================ */
+
+function renderMembers(){
+
+  const list =
+    members.filter(m=>m.role!=="organizer");
+
+  if(!list.length){
+
+    $("membersList").innerHTML =
+      `<div class="empty">No members found.</div>`;
+
     return;
   }
 
-  const pendingPayments=db.sessions
-    .flatMap(s=>s.bookings)
-    .filter(b=>b.paymentStatus!=="verified")
-    .length;
+  $("membersList").innerHTML = `
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
 
-  page.innerHTML=`
+        <tbody>
+          ${list.map(m=>`
 
-    <div class="page-title">
-      <h1>⚙ Organizer Panel</h1>
-      <p>Manage both DIUBS systems.</p>
-    </div>
+            <tr>
+              <td>${escapeHtml(m.name)}</td>
+              <td>${escapeHtml(m.email)}</td>
+              <td>${escapeHtml(m.phone || "—")}</td>
+              <td>
+                <span class="badge ${m.active!==false?"green":"red"}">
+                  ${m.active!==false?"Active":"Inactive"}
+                </span>
+              </td>
 
-    <div class="grid grid-4">
-
-      <div class="stat">
-        <div class="number">${db.members.length}</div>
-        <div class="label">Members</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">${db.meetings.length}</div>
-        <div class="label">Meetings</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">${db.sessions.length}</div>
-        <div class="label">Sessions</div>
-      </div>
-
-      <div class="stat">
-        <div class="number">${pendingPayments}</div>
-        <div class="label">Pending Payments</div>
-      </div>
-
-    </div>
-
-    <div style="height:25px"></div>
-
-    <div class="grid grid-2">
-
-      <div class="card">
-
-        <h2>👥 Member Management</h2>
-
-        <p style="color:#777;font-size:13px">
-          Members can be selected in musician and attendance forms.
-        </p>
-
-        <button class="btn btn-primary"
-          onclick="openMemberModal()">
-          + Add Member
-        </button>
-
-        <div style="height:15px"></div>
-
-        ${
-          db.members.length
-          ?
-          `
-          <div class="member-list">
-            ${db.members.map(m=>`
-
-              <div class="member-row">
-
-                <div>
-                  <strong>${escapeHTML(m.name)}</strong>
-
-                  <div class="member-meta">
-                    ${m.roles.join(" • ")}
-                  </div>
+              <td>
+                <div class="actions">
+                  <button class="btn" onclick="editMember('${m.id}')">Edit</button>
+                  <button class="btn btn-danger" onclick="deleteMember('${m.id}')">Delete</button>
                 </div>
+              </td>
+            </tr>
 
-                <div class="btn-row">
+          `).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
 
-                  <button class="btn btn-small"
-                    onclick="openMemberModal('${m.id}')">
+
+window.openMemberModal = function(id=null){
+
+  $("memberEditId").value = id || "";
+
+  if(id){
+
+    const m = members.find(x=>x.id===id);
+
+    $("memberModalTitle").textContent = "Edit Member";
+
+    $("memberName").value = m?.name || "";
+    $("memberEmail").value = m?.email || "";
+    $("memberPhone").value = m?.phone || "";
+
+  }else{
+
+    $("memberModalTitle").textContent = "Add Member";
+
+    $("memberName").value = "";
+    $("memberEmail").value = "";
+    $("memberPhone").value = "";
+  }
+
+  openModal("memberModal");
+};
+
+
+window.editMember = id => openMemberModal(id);
+
+
+window.saveMember = async function(){
+
+  const id = $("memberEditId").value;
+
+  const data = {
+    name:$("memberName").value.trim(),
+    email:$("memberEmail").value.trim(),
+    phone:$("memberPhone").value.trim(),
+    role:"member",
+    active:true
+  };
+
+  if(!data.name || !data.email){
+
+    showToast("Name and email are required.");
+    return;
+  }
+
+  try{
+
+    if(id){
+
+      await updateDoc(
+        doc(db,"users",id),
+        data
+      );
+
+    }else{
+
+      /*
+        Organizer-created member profile.
+        Firebase Authentication account can be created separately.
+      */
+
+      const newDoc =
+        await addDoc(collection(db,"users"),{
+          ...data,
+          createdAt:serverTimestamp()
+        });
+
+    }
+
+    closeModal("memberModal");
+
+    await loadMembers();
+    renderMembers();
+    renderDashboard();
+
+    showToast("Member saved.");
+
+  }catch(error){
+
+    showToast(error.message);
+  }
+};
+
+
+window.deleteMember = async function(id){
+
+  if(!confirm("Delete this member profile?")) return;
+
+  try{
+
+    await deleteDoc(doc(db,"users",id));
+
+    await loadMembers();
+    renderMembers();
+    renderDashboard();
+
+    showToast("Member deleted.");
+
+  }catch(error){
+
+    showToast(error.message);
+  }
+};
+
+
+/* ============================================================
+   MEETINGS
+   ============================================================ */
+
+window.openMeetingModal = function(id=null){
+
+  $("meetingEditId").value = id || "";
+
+  const now = localDateTime();
+
+  if(id){
+
+    const m = meetings.find(x=>x.id===id);
+
+    $("meetingModalTitle").textContent = "Edit Meeting";
+
+    $("meetingTopic").value = m?.topic || "";
+    $("meetingDate").value = m?.date || now.date;
+    $("meetingTime").value = m?.startTime || now.time;
+
+  }else{
+
+    $("meetingModalTitle").textContent = "Create Meeting";
+
+    $("meetingTopic").value = "";
+    $("meetingDate").value = now.date;
+    $("meetingTime").value = now.time;
+  }
+
+  renderMeetingMemberChecks(id);
+
+  openModal("meetingModal");
+};
+
+
+function renderMeetingMemberChecks(meetingId){
+
+  const meeting =
+    meetingId ?
+    meetings.find(m=>m.id===meetingId) :
+    null;
+
+  const selected =
+    meeting?.memberIds || [];
+
+  const list =
+    members.filter(m=>m.role!=="organizer");
+
+  $("meetingMemberChecks").innerHTML = list.length ?
+
+    list.map(m=>`
+
+      <label style="
+        display:flex;
+        align-items:center;
+        gap:8px;
+        padding:8px;
+        background:#181818;
+        margin-bottom:5px;
+        border-radius:7px;
+      ">
+
+        <input
+          type="checkbox"
+          value="${m.id}"
+          ${selected.includes(m.id)?"checked":""}
+          style="width:auto"
+        >
+
+        ${escapeHtml(m.name)}
+
+      </label>
+
+    `).join("") :
+
+    `<div class="empty">No members available.</div>`;
+}
+
+
+window.saveMeeting = async function(){
+
+  const id = $("meetingEditId").value;
+
+  const memberIds =
+    [...$("meetingMemberChecks").querySelectorAll("input:checked")]
+      .map(x=>x.value);
+
+  const data = {
+
+    topic:$("meetingTopic").value.trim(),
+
+    date:$("meetingDate").value,
+
+    startTime:$("meetingTime").value,
+
+    memberIds,
+
+    updatedAt:serverTimestamp()
+  };
+
+  if(!data.topic || !data.date || !data.startTime){
+
+    showToast("Topic, date and time are required.");
+    return;
+  }
+
+  try{
+
+    if(id){
+
+      await updateDoc(
+        doc(db,"meetings",id),
+        data
+      );
+
+    }else{
+
+      await addDoc(
+        collection(db,"meetings"),
+        {
+          ...data,
+          createdBy:currentUser.uid,
+          createdAt:serverTimestamp()
+        }
+      );
+    }
+
+    closeModal("meetingModal");
+
+    await loadMeetings();
+    renderMeetings();
+    renderDashboard();
+
+    showToast("Meeting saved.");
+
+  }catch(error){
+
+    showToast(error.message);
+  }
+};
+
+
+function renderMeetings(){
+
+  if(!meetings.length){
+
+    $("meetingsList").innerHTML =
+      `<div class="empty">No meetings created yet.</div>`;
+
+    return;
+  }
+
+  $("meetingsList").innerHTML = `
+
+    <div class="table-wrap">
+      <table>
+
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th>Date</th>
+            <th>Start</th>
+            <th>Members</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          ${meetings.map(m=>`
+
+            <tr>
+
+              <td>${escapeHtml(m.topic)}</td>
+
+              <td>${escapeHtml(m.date)}</td>
+
+              <td>${escapeHtml(m.startTime)}</td>
+
+              <td>${(m.memberIds||[]).length}</td>
+
+              <td>
+
+                <div class="actions">
+
+                  <button
+                    class="btn"
+                    onclick="openMeetingModal('${m.id}')">
                     Edit
                   </button>
 
-                  <button class="btn btn-danger btn-small"
-                    onclick="deleteMember('${m.id}')">
+                  <button
+                    class="btn"
+                    onclick="openAttendanceForMeeting('${m.id}')">
+                    Attendance
+                  </button>
+
+                  <button
+                    class="btn btn-danger"
+                    onclick="deleteMeeting('${m.id}')">
                     Delete
                   </button>
 
                 </div>
 
-              </div>
+              </td>
 
-            `).join("")}
-          </div>
-          `
-          :
-          `<div class="empty">No members.</div>`
+            </tr>
+
+          `).join("")}
+
+        </tbody>
+
+      </table>
+    </div>
+  `;
+}
+
+
+window.deleteMeeting = async function(id){
+
+  if(!confirm("Delete this meeting and its meeting record?"))
+    return;
+
+  await deleteDoc(doc(db,"meetings",id));
+
+  await loadMeetings();
+
+  renderMeetings();
+  renderDashboard();
+
+  showToast("Meeting deleted.");
+};
+
+
+window.openAttendanceForMeeting = function(id){
+
+  showPage("attendance");
+
+  $("attendanceMeetingSelect").value = id;
+
+  renderAttendance();
+};
+
+
+/* ============================================================
+   ATTENDANCE
+   ============================================================ */
+
+function populateAttendanceMeetingSelect(){
+
+  $("attendanceMeetingSelect").innerHTML =
+    `<option value="">Select a meeting</option>`+
+    meetings.map(m=>`
+      <option value="${m.id}">
+        ${escapeHtml(m.topic)} — ${m.date} ${m.startTime}
+      </option>
+    `).join("");
+
+  renderAttendance();
+}
+
+
+async function getMeetingAttendance(meetingId){
+
+  const snap = await getDocs(
+    query(
+      collection(db,"attendance"),
+      where("meetingId","==",meetingId)
+    )
+  );
+
+  return snap.docs.map(d=>({
+    id:d.id,
+    ...d.data()
+  }));
+}
+
+
+window.renderAttendance = async function(){
+
+  const meetingId =
+    $("attendanceMeetingSelect").value;
+
+  if(!meetingId){
+
+    $("attendanceWorkspace").innerHTML = "";
+    return;
+  }
+
+  const meeting =
+    meetings.find(m=>m.id===meetingId);
+
+  if(!meeting) return;
+
+  const records =
+    await getMeetingAttendance(meetingId);
+
+  const assigned =
+    meeting.memberIds || [];
+
+  const participants =
+    assigned.map(id =>
+      members.find(m=>m.id===id)
+    ).filter(Boolean);
+
+  $("attendanceWorkspace").innerHTML = `
+
+    <div class="section">
+
+      <div class="section-header">
+
+        <div>
+          <h3>${escapeHtml(meeting.topic)}</h3>
+
+          <p style="color:#888;margin-top:5px">
+            Meeting start:
+            <strong>${meeting.date} ${meeting.startTime}</strong>
+          </p>
+        </div>
+
+        <div class="actions">
+
+          <button
+            class="btn btn-success"
+            onclick="presentAll('${meeting.id}')">
+            ✓ PRESENT ALL
+          </button>
+
+          <button
+            class="btn"
+            onclick="refreshAttendance()">
+            Refresh
+          </button>
+
+        </div>
+
+      </div>
+
+      <div class="info" style="margin-bottom:15px">
+        PRESENT ALL gives every selected member the exact meeting
+        start time. Individual late marking uses the current time.
+      </div>
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Member</th>
+              <th>Status</th>
+              <th>Present Time</th>
+              <th>Late By</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${participants.map(member=>{
+
+              const record =
+                records.find(r=>r.userId===member.id);
+
+              let late = "";
+
+              if(record?.presentTime){
+
+                const start =
+                  new Date(`${meeting.date}T${meeting.startTime}`);
+
+                const present =
+                  new Date(record.presentTime);
+
+                const mins =
+                  Math.max(
+                    0,
+                    Math.round((present-start)/60000)
+                  );
+
+                late =
+                  mins > 0 ?
+                  `${mins} min` :
+                  "On time";
+              }
+
+              return `
+
+                <tr>
+
+                  <td>${escapeHtml(member.name)}</td>
+
+                  <td>
+                    ${
+                      record?.status==="present" ?
+                      `<span class="badge green">Present</span>` :
+                      `<span class="badge red">Absent</span>`
+                    }
+                  </td>
+
+                  <td>
+                    ${
+                      record?.presentTime ?
+                      new Date(record.presentTime).toLocaleTimeString([],{
+                        hour:"2-digit",
+                        minute:"2-digit"
+                      }) :
+                      "—"
+                    }
+                  </td>
+
+                  <td>${late || "—"}</td>
+
+                  <td>
+
+                    <div class="actions">
+
+                      ${
+                        record?.status==="present" ?
+
+                        `<button
+                          class="btn btn-warning"
+                          onclick="markAbsent('${meeting.id}','${member.id}')">
+                          Mark Absent
+                        </button>` :
+
+                        `<button
+                          class="btn btn-success"
+                          onclick="markPresentLate('${meeting.id}','${member.id}')">
+                          Present Now
+                        </button>`
+                      }
+
+                      ${
+                        record ?
+                        `<button
+                          class="btn btn-danger"
+                          onclick="deleteAttendance('${record.id}')">
+                          Delete
+                        </button>` :
+                        ""
+                      }
+
+                    </div>
+
+                  </td>
+
+                </tr>
+              `;
+
+            }).join("")}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+  `;
+}
+
+
+window.refreshAttendance = () =>
+  renderAttendance();
+
+
+window.presentAll = async function(meetingId){
+
+  const meeting =
+    meetings.find(m=>m.id===meetingId);
+
+  if(!meeting) return;
+
+  const meetingStart =
+    `${meeting.date}T${meeting.startTime}:00`;
+
+  const participants =
+    meeting.memberIds || [];
+
+  for(const userId of participants){
+
+    const existing =
+      await getDocs(
+        query(
+          collection(db,"attendance"),
+          where("meetingId","==",meetingId),
+          where("userId","==",userId)
+        )
+      );
+
+    const data = {
+      meetingId,
+      userId,
+      status:"present",
+      presentTime:meetingStart,
+      markedBy:currentUser.uid,
+      bulk:true,
+      updatedAt:serverTimestamp()
+    };
+
+    if(existing.empty){
+
+      await addDoc(
+        collection(db,"attendance"),
+        data
+      );
+
+    }else{
+
+      await updateDoc(
+        existing.docs[0].ref,
+        data
+      );
+    }
+  }
+
+  showToast("Everyone marked present at meeting start time.");
+
+  renderAttendance();
+};
+
+
+window.markPresentLate = async function(meetingId,userId){
+
+  const now =
+    new Date().toISOString();
+
+  const existing =
+    await getDocs(
+      query(
+        collection(db,"attendance"),
+        where("meetingId","==",meetingId),
+        where("userId","==",userId)
+      )
+    );
+
+  const data = {
+    meetingId,
+    userId,
+    status:"present",
+    presentTime:now,
+    markedBy:currentUser.uid,
+    bulk:false,
+    updatedAt:serverTimestamp()
+  };
+
+  if(existing.empty){
+
+    await addDoc(
+      collection(db,"attendance"),
+      data
+    );
+
+  }else{
+
+    await updateDoc(
+      existing.docs[0].ref,
+      data
+    );
+  }
+
+  showToast("Member marked present using current time.");
+
+  renderAttendance();
+};
+
+
+window.markAbsent = async function(meetingId,userId){
+
+  const existing =
+    await getDocs(
+      query(
+        collection(db,"attendance"),
+        where("meetingId","==",meetingId),
+        where("userId","==",userId)
+      )
+    );
+
+  const data = {
+    meetingId,
+    userId,
+    status:"absent",
+    presentTime:null,
+    markedBy:currentUser.uid,
+    updatedAt:serverTimestamp()
+  };
+
+  if(existing.empty){
+
+    await addDoc(
+      collection(db,"attendance"),
+      data
+    );
+
+  }else{
+
+    await updateDoc(
+      existing.docs[0].ref,
+      data
+    );
+  }
+
+  renderAttendance();
+};
+
+
+window.deleteAttendance = async function(id){
+
+  if(!confirm("Delete this attendance entry?"))
+    return;
+
+  await deleteDoc(
+    doc(db,"attendance",id)
+  );
+
+  renderAttendance();
+};
+
+
+/* ============================================================
+   BREAKING PAD SESSION STRUCTURE
+   ============================================================ */
+
+function getSessionRules(duration){
+
+  if(Number(duration) === 6){
+
+    return {
+      duration:6,
+      setups:3,
+      songs:9,
+      songsPerSetup:3,
+      setupTime:"1 hour 30 minutes",
+      soundTime:"1 hour 30 minutes sound setup + spare time"
+    };
+  }
+
+  return {
+    duration:3,
+    setups:2,
+    songs:4,
+    songsPerSetup:2,
+    setupTime:"Session allocation",
+    soundTime:"Included within session"
+  };
+}
+
+
+window.updateSessionStructure = function(){
+
+  const rules =
+    getSessionRules(
+      $("sessionDuration").value
+    );
+
+  $("sessionStructurePreview").innerHTML = `
+
+    <div class="info" style="margin-bottom:15px">
+
+      <strong>${rules.duration}-Hour Session</strong><br><br>
+
+      Setups: <strong>${rules.setups}</strong><br>
+      Total Songs: <strong>${rules.songs}</strong><br>
+      Songs per Setup: <strong>${rules.songsPerSetup}</strong><br>
+      Setup Time: <strong>${rules.setupTime}</strong><br>
+      ${rules.soundTime}
+
+    </div>
+  `;
+};
+
+
+window.openSessionModal = function(id=null){
+
+  $("sessionEditId").value = id || "";
+
+  const now = localDateTime();
+
+  if(id){
+
+    const s =
+      sessions.find(x=>x.id===id);
+
+    $("sessionName").value =
+      s?.name || "";
+
+    $("sessionDuration").value =
+      s?.duration || 3;
+
+    $("sessionCapacity").value =
+      s?.capacity || 20;
+
+    $("sessionDate").value =
+      s?.date || now.date;
+
+    $("sessionTime").value =
+      s?.startTime || now.time;
+
+  }else{
+
+    $("sessionName").value = "";
+
+    $("sessionDuration").value = 3;
+
+    $("sessionCapacity").value = 20;
+
+    $("sessionDate").value = now.date;
+
+    $("sessionTime").value = now.time;
+  }
+
+  updateSessionStructure();
+
+  openModal("sessionModal");
+};
+
+
+window.saveSession = async function(){
+
+  const id =
+    $("sessionEditId").value;
+
+  const duration =
+    Number($("sessionDuration").value);
+
+  const rules =
+    getSessionRules(duration);
+
+  const data = {
+
+    name:$("sessionName").value.trim(),
+
+    duration,
+
+    setups:rules.setups,
+
+    totalSongs:rules.songs,
+
+    songsPerSetup:rules.songsPerSetup,
+
+    setupTime:rules.setupTime,
+
+    soundSetupTime:rules.soundTime,
+
+    capacity:Number($("sessionCapacity").value),
+
+    date:$("sessionDate").value,
+
+    startTime:$("sessionTime").value,
+
+    updatedAt:serverTimestamp()
+  };
+
+  if(!data.name){
+
+    showToast("Session name is required.");
+    return;
+  }
+
+  try{
+
+    if(id){
+
+      await updateDoc(
+        doc(db,"breakingSessions",id),
+        data
+      );
+
+    }else{
+
+      const setupArray =
+        Array.from(
+          {length:rules.setups},
+          (_,i)=>({
+            name:`Setup ${i+1}`,
+            musicians:[],
+            songs:[]
+          })
+        );
+
+      await addDoc(
+        collection(db,"breakingSessions"),
+        {
+          ...data,
+          setupData:setupArray,
+          createdBy:currentUser.uid,
+          createdAt:serverTimestamp()
         }
+      );
+    }
 
-      </div>
+    closeModal("sessionModal");
 
-      <div class="card">
+    await loadSessions();
 
-        <h2>💳 Payment Settings</h2>
+    renderSessions();
+    renderDashboard();
 
-        <p style="color:#777;font-size:13px">
-          Only configured payment methods will be shown to members.
-        </p>
+    showToast("Breaking Pad session saved.");
 
-        <div class="form-group">
-          <label>bKash Number</label>
-          <input id="adminBkash"
-            value="${escapeHTML(db.settings.paymentMethods.bkash)}"
-            placeholder="01XXXXXXXXX">
-        </div>
+  }catch(error){
 
-        <div class="form-group">
-          <label>Nagad Number</label>
-          <input id="adminNagad"
-            value="${escapeHTML(db.settings.paymentMethods.nagad)}"
-            placeholder="01XXXXXXXXX">
-        </div>
+    showToast(error.message);
+  }
+};
 
-        <div class="form-group">
-          <label>Bank Details</label>
-          <textarea id="adminBank"
-            placeholder="Bank name&#10;Account name&#10;Account number&#10;Branch">${escapeHTML(db.settings.paymentMethods.bank)}</textarea>
-        </div>
 
-        <label style="display:flex;align-items:center;gap:10px">
-          <input
-            type="checkbox"
-            id="adminCash"
-            ${db.settings.paymentMethods.cash?"checked":""}
-            style="width:20px">
-          Accept Cash Payment
-        </label>
+function renderSessions(){
 
-        <div style="height:15px"></div>
+  if(!sessions.length){
 
-        <button class="btn btn-primary"
-          onclick="savePaymentSettings()">
-          Save Payment Settings
-        </button>
+    $("sessionsList").innerHTML =
+      `<div class="empty">No Breaking Pad sessions created yet.</div>`;
 
-      </div>
+    return;
+  }
+
+  $("sessionsList").innerHTML = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Session</th>
+            <th>Duration</th>
+            <th>Setups</th>
+            <th>Songs</th>
+            <th>Capacity</th>
+            <th>Date</th>
+            <th>Actions</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${sessions.map(s=>`
+
+            <tr>
+
+              <td>${escapeHtml(s.name)}</td>
+
+              <td>${s.duration} Hours</td>
+
+              <td>${s.setups}</td>
+
+              <td>${s.totalSongs}</td>
+
+              <td>${s.capacity}</td>
+
+              <td>${s.date} ${s.startTime}</td>
+
+              <td>
+
+                <div class="actions">
+
+                  <button
+                    class="btn"
+                    onclick="viewSession('${s.id}')">
+                    Manage
+                  </button>
+
+                  <button
+                    class="btn"
+                    onclick="openSessionModal('${s.id}')">
+                    Edit
+                  </button>
+
+                  <button
+                    class="btn btn-danger"
+                    onclick="deleteSession('${s.id}')">
+                    Delete
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `).join("")}
+
+        </tbody>
+
+      </table>
+
+    </div>
+  `;
+}
+
+
+window.deleteSession = async function(id){
+
+  if(!confirm("Delete this entire Breaking Pad session?"))
+    return;
+
+  await deleteDoc(
+    doc(db,"breakingSessions",id)
+  );
+
+  await loadSessions();
+
+  renderSessions();
+  renderDashboard();
+
+  showToast("Session deleted.");
+};
+
+
+/* ============================================================
+   SESSION MANAGEMENT
+   ============================================================ */
+
+window.viewSession = async function(id){
+
+  const session =
+    sessions.find(s=>s.id===id);
+
+  if(!session) return;
+
+  $("detailSessionTitle").textContent =
+    session.name;
+
+  const setupData =
+    session.setupData ||
+    Array.from(
+      {length:session.setups},
+      (_,i)=>({
+        name:`Setup ${i+1}`,
+        musicians:[],
+        songs:[]
+      })
+    );
+
+  $("sessionDetailContent").innerHTML = `
+
+    <div class="info" style="margin-bottom:15px">
+
+      <strong>${session.duration}-Hour Session</strong><br>
+      ${session.setups} setups •
+      ${session.totalSongs} songs •
+      ${session.songsPerSetup} songs/setup<br>
+      Date: ${session.date}<br>
+      Start: ${session.startTime}
+
+      ${
+        session.duration===6 ?
+        `<br>Each setup: 1 hour 30 minutes<br>
+         Overall: 1 hour 30 minutes sound setup + spare time`
+        :
+        ""
+      }
 
     </div>
 
-    <div style="height:20px"></div>
+    <div id="setupManagement">
 
-    <div class="card">
+      ${setupData.map((setup,index)=>`
 
-      <h2>📝 Attendance Permission</h2>
+        <div class="setup-card">
 
-      <p style="color:#777;font-size:13px">
-        Organizer can give another member permission to take attendance.
-      </p>
+          <div class="setup-header">
 
-      <div class="member-list">
+            <h4>${escapeHtml(setup.name || `Setup ${index+1}`)}</h4>
 
-        ${db.members.map(m=>`
+            <button
+              class="btn"
+              onclick="editSetup('${session.id}',${index})">
+              Edit Setup
+            </button>
 
-          <label class="member-row">
+          </div>
 
-            <span>
-              <strong>${escapeHTML(m.name)}</strong>
-              <small style="display:block;color:#777">
-                ${m.roles.join(" • ")}
-              </small>
-            </span>
+          <div>
 
-            <input
-              type="checkbox"
-              class="permission-check"
-              value="${m.id}"
-              ${db.settings.attendancePermissions.includes(m.id)?"checked":""}
-              style="width:20px">
+            <strong>Team</strong>
 
-          </label>
+            <div class="team-list">
 
-        `).join("")}
+              ${
+                (setup.musicians||[]).length ?
 
-      </div>
+                setup.musicians.map(m=>`
+                  <span class="team-pill">
+                    ${escapeHtml(m.role)}:
+                    ${escapeHtml(m.name)}
+                  </span>
+                `).join("") :
 
-      <div style="height:15px"></div>
+                `<span style="color:#777">No musicians assigned</span>`
+              }
 
-      <button class="btn btn-primary"
-        onclick="saveAttendancePermissions()">
-        Save Permissions
-      </button>
+            </div>
 
-    </div>
+          </div>
 
-    <div style="height:20px"></div>
+          <div style="margin-top:14px">
 
-    <div class="card">
+            <strong>Songs</strong>
 
-      <h2>⚠ V1 Data Controls</h2>
+            ${
+              (setup.songs||[]).length ?
 
-      <p style="color:#777;font-size:13px">
-        V1 stores everything in this browser's local storage.
-        This button is useful while testing.
-      </p>
+              setup.songs.map((song,i)=>`
 
-      <button class="btn btn-danger"
-        onclick="resetDatabase()">
-        Reset All V1 Data
-      </button>
+                <div class="song-slot">
+
+                  <strong>${i+1}.</strong>
+                  ${escapeHtml(song)}
+
+                  <button
+                    class="btn btn-danger"
+                    style="float:right;padding:5px 8px"
+                    onclick="removeSong('${session.id}',${index},${i})">
+                    ×
+                  </button>
+
+                </div>
+
+              `).join("") :
+
+              `<div style="color:#777;margin-top:8px">
+                No songs added.
+              </div>`
+            }
+
+          </div>
+
+          <div class="actions" style="margin-top:13px">
+
+            <button
+              class="btn btn-primary"
+              onclick="addSong('${session.id}',${index})">
+              + Add Song
+            </button>
+
+            <button
+              class="btn"
+              onclick="addMusician('${session.id}',${index})">
+              + Add Musician
+            </button>
+
+          </div>
+
+        </div>
+
+      `).join("")}
 
     </div>
 
   `;
-}
 
-/* =========================
-   MEMBER MANAGEMENT
-========================= */
+  openModal("sessionDetailModal");
+};
 
-function openMemberModal(id=null){
 
-  const member=id
-    ?db.members.find(m=>m.id===id)
-    :null;
+/* ============================================================
+   SETUP / TEAM EDITING
+   ============================================================ */
 
-  showModal(`
-    <div class="modal-head">
-      <h2>${member?"Edit Member":"Add Member"}</h2>
-      <button class="close" onclick="closeModal()">×</button>
-    </div>
+window.editSetup = async function(sessionId,index){
 
-    <div class="form-group">
-      <label>Name</label>
-      <input id="memberName"
-        value="${escapeHTML(member?.name||"")}"
-        placeholder="Member name">
-    </div>
+  const session =
+    sessions.find(s=>s.id===sessionId);
 
-    <div class="form-group">
-      <label>Roles</label>
-      <input id="memberRoles"
-        value="${escapeHTML(member?.roles?.join(", ")||"")}"
-        placeholder="Vocal, Guitar">
-      <small style="color:#777">
-        Separate multiple roles with commas.
-      </small>
-    </div>
+  const setup =
+    session.setupData[index];
 
-    <button class="btn btn-primary"
-      onclick="saveMember('${id||""}')">
-      Save Member
-    </button>
-  `);
-}
+  const newName =
+    prompt(
+      "Setup name:",
+      setup.name || `Setup ${index+1}`
+    );
 
-function saveMember(id){
+  if(newName === null) return;
 
-  const name=document.getElementById("memberName").value.trim();
-  const roles=document.getElementById("memberRoles").value
-    .split(",")
-    .map(x=>x.trim())
-    .filter(Boolean);
+  session.setupData[index].name =
+    newName.trim() || `Setup ${index+1}`;
 
-  if(!name){
-    alert("Enter a member name.");
+  await updateDoc(
+    doc(db,"breakingSessions",sessionId),
+    {
+      setupData:session.setupData,
+      updatedAt:serverTimestamp()
+    }
+  );
+
+  await loadSessions();
+
+  viewSession(sessionId);
+};
+
+
+window.addMusician = async function(sessionId,index){
+
+  const session =
+    sessions.find(s=>s.id===sessionId);
+
+  const role =
+    prompt(
+      "Instrument / Role:\nExample: Vocal, Guitar, Drums, Bass, Keyboard, Other",
+      "Guitar"
+    );
+
+  if(!role) return;
+
+  const name =
+    prompt(
+      "Musician name:"
+    );
+
+  if(!name) return;
+
+  if(!session.setupData[index].musicians)
+    session.setupData[index].musicians=[];
+
+  session.setupData[index].musicians.push({
+    role:role.trim(),
+    name:name.trim()
+  });
+
+  await updateDoc(
+    doc(db,"breakingSessions",sessionId),
+    {
+      setupData:session.setupData,
+      updatedAt:serverTimestamp()
+    }
+  );
+
+  await loadSessions();
+
+  viewSession(sessionId);
+};
+
+
+window.addSong = async function(sessionId,index){
+
+  const session =
+    sessions.find(s=>s.id===sessionId);
+
+  const setup =
+    session.setupData[index];
+
+  const max =
+    Number(session.songsPerSetup);
+
+  if((setup.songs||[]).length >= max){
+
+    showToast(
+      `This setup already has ${max} songs.`
+    );
+
     return;
   }
 
-  if(id){
+  const song =
+    prompt("Song name:");
 
-    const member=db.members.find(m=>m.id===id);
+  if(!song) return;
 
-    if(!member) return;
+  const clean =
+    song.trim().toLowerCase();
 
-    member.name=name;
-    member.roles=roles;
+  const duplicate =
+    (session.setupData||[]).some(s=>
+      (s.songs||[]).some(x=>
+        x.trim().toLowerCase()===clean
+      )
+    );
 
-  }else{
+  if(duplicate){
 
-    db.members.push({
-      id:uid("member"),
-      name,
-      roles
-    });
+    showToast(
+      "This song already exists in this session."
+    );
 
+    return;
   }
 
-  saveDB();
-  closeModal();
-  renderApp();
-}
+  if(!session.setupData[index].songs)
+    session.setupData[index].songs=[];
 
-function deleteMember(id){
-
-  const member=db.members.find(m=>m.id===id);
-
-  if(!member) return;
-
-  if(!confirm(
-    `Delete member "${member.name}" from the member list? Existing attendance/session history will remain.`
-  )) return;
-
-  db.members=db.members.filter(m=>m.id!==id);
-
-  db.settings.attendancePermissions=
-    db.settings.attendancePermissions.filter(x=>x!==id);
-
-  saveDB();
-  renderApp();
-}
-
-/* =========================
-   PAYMENT SETTINGS
-========================= */
-
-function savePaymentSettings(){
-
-  db.settings.paymentMethods.bkash=
-    document.getElementById("adminBkash").value.trim();
-
-  db.settings.paymentMethods.nagad=
-    document.getElementById("adminNagad").value.trim();
-
-  db.settings.paymentMethods.bank=
-    document.getElementById("adminBank").value.trim();
-
-  db.settings.paymentMethods.cash=
-    document.getElementById("adminCash").checked;
-
-  saveDB();
-
-  alert("Payment settings saved.");
-
-  renderApp();
-}
-
-function saveAttendancePermissions(){
-
-  db.settings.attendancePermissions=[
-    ...document.querySelectorAll(".permission-check:checked")
-  ].map(x=>x.value);
-
-  saveDB();
-
-  alert("Attendance permissions saved.");
-
-  renderApp();
-}
-
-/* ============================================================
-   MODAL
-============================================================ */
-
-function showModal(content){
-
-  const existing=document.getElementById("modal");
-
-  if(existing) existing.remove();
-
-  document.body.insertAdjacentHTML(
-    "beforeend",
-    `
-    <div class="modal" id="modal">
-      <div class="modal-box">
-        ${content}
-      </div>
-    </div>
-    `
+  session.setupData[index].songs.push(
+    song.trim()
   );
-}
 
-function closeModal(){
+  await updateDoc(
+    doc(db,"breakingSessions",sessionId),
+    {
+      setupData:session.setupData,
+      updatedAt:serverTimestamp()
+    }
+  );
 
-  const modal=document.getElementById("modal");
+  await loadSessions();
 
-  if(modal) modal.remove();
-}
+  viewSession(sessionId);
+};
+
+
+window.removeSong = async function(sessionId,index,songIndex){
+
+  const session =
+    sessions.find(s=>s.id===sessionId);
+
+  if(!confirm("Remove this song?"))
+    return;
+
+  session.setupData[index].songs
+    .splice(songIndex,1);
+
+  await updateDoc(
+    doc(db,"breakingSessions",sessionId),
+    {
+      setupData:session.setupData,
+      updatedAt:serverTimestamp()
+    }
+  );
+
+  await loadSessions();
+
+  viewSession(sessionId);
+};
+
 
 /* ============================================================
-   RESET
-============================================================ */
+   GROUP HISTORY WARNING
+   ============================================================ */
 
-function resetDatabase(){
+async function checkGroupHistory(sessionId){
 
-  if(!confirm(
-    "This will erase all V1 meetings, sessions, bookings and members. Continue?"
-  )) return;
+  const session =
+    sessions.find(s=>s.id===sessionId);
 
-  localStorage.removeItem(STORAGE_KEY);
+  if(!session) return;
 
-  db=loadDB();
+  const currentGroups =
+    (session.setupData||[])
+      .map(s=>
+        (s.musicians||[])
+          .map(m=>m.name.trim().toLowerCase())
+          .sort()
+          .join("|")
+      )
+      .filter(Boolean);
 
-  currentMeetingId=null;
-  currentSessionId=null;
+  if(!currentGroups.length)
+    return;
 
-  alert("V1 data has been reset.");
+  const snap =
+    await getDocs(collection(db,"groupHistory"));
 
-  renderApp();
+  const history =
+    snap.docs.map(d=>({
+      id:d.id,
+      ...d.data()
+    }));
+
+  const matches =
+    history.filter(h =>
+      currentGroups.includes(
+        (h.musicians||[])
+          .map(x=>x.trim().toLowerCase())
+          .sort()
+          .join("|")
+      )
+    );
+
+  if(matches.length){
+
+    showToast(
+      "Previous group combination found. Organizer may still reuse it."
+    );
+  }
 }
 
-/* ============================================================
-   START
-============================================================ */
 
-renderApp();
+async function saveGroupHistory(session){
+
+  for(const setup of session.setupData || []){
+
+    const musicians =
+      (setup.musicians||[])
+        .map(m=>m.name)
+        .filter(Boolean);
+
+    if(musicians.length < 2)
+      continue;
+
+    await addDoc(
+      collection(db,"groupHistory"),
+      {
+        sessionId:session.id,
+        setupName:setup.name,
+        musicians,
+        date:session.date,
+        createdAt:serverTimestamp()
+      }
+    );
+  }
+}
+
+
+/* ============================================================
+   BOOKINGS
+   ============================================================ */
+
+window.openBookingModal = function(sessionId){
+
+  const session =
+    sessions.find(s=>s.id===sessionId);
+
+  if(!session) return;
+
+  const count =
+    bookings.filter(
+      b=>b.sessionId===sessionId &&
+      b.status!=="cancelled"
+    ).length;
+
+  if(count >= Number(session.capacity)){
+
+    showToast(
+      "Maximum capacity reached."
+    );
+
+    return;
+  }
+
+  $("bookingSessionId").value =
+    sessionId;
+
+  $("bookingName").value =
+    currentProfile.name || "";
+
+  $("bookingPhone").value =
+    currentProfile.phone || "";
+
+  $("bookingPaymentMethod").value =
+    "cash";
+
+  $("bookingTransactionId").value = "";
+
+  updatePaymentInstructions();
+
+  $("bookingPaymentMethod")
+    .onchange =
+    updatePaymentInstructions;
+
+  openModal("bookingModal");
+};
+
+
+function updatePaymentInstructions(){
+
+  const method =
+    $("bookingPaymentMethod").value;
+
+  let text =
+    "Cash payment: pay to the organizer.";
+
+  if(method==="bkash"){
+
+    text =
+      settingsData.bkash ?
+      `Send payment to bKash: ${escapeHtml(settingsData.bkash)}` :
+      "bKash payment details are not available yet.";
+  }
+
+  if(method==="nagad"){
+
+    text =
+      settingsData.nagad ?
+      `Send payment to Nagad: ${escapeHtml(settingsData.nagad)}` :
+      "Nagad payment details are not available yet.";
+  }
+
+  if(method==="bank"){
+
+    if(settingsData.bank){
+
+      text =
+        `Bank: ${escapeHtml(settingsData.bankName || "Bank")} — ${escapeHtml(settingsData.bank)}`;
+
+    }else{
+
+      text =
+        "Bank payment details are not available yet.";
+    }
+  }
+
+  $("paymentInstructions").innerHTML =
+    text;
+}
+
+
+window.submitBooking = async function(){
+
+  const sessionId =
+    $("bookingSessionId").value;
+
+  const session =
+    sessions.find(s=>s.id===sessionId);
+
+  if(!session) return;
+
+  const method =
+    $("bookingPaymentMethod").value;
+
+  const transactionId =
+    $("bookingTransactionId").value.trim();
+
+  const count =
+    bookings.filter(
+      b=>b.sessionId===sessionId &&
+      b.status!=="cancelled"
+    ).length;
+
+  if(count >= Number(session.capacity)){
+
+    showToast("Maximum capacity reached.");
+    return;
+  }
+
+  if(method!=="cash" && !transactionId){
+
+    showToast(
+      "Transaction ID is required for online payment."
+    );
+
+    return;
+  }
+
+  const bookingData = {
+
+    sessionId,
+
+    userId:currentUser.uid,
+
+    userName:currentProfile.name || "",
+
+    userPhone:currentProfile.phone || "",
+
+    paymentMethod:method,
+
+    transactionId,
+
+    status:"confirmed",
+
+    createdAt:serverTimestamp()
+  };
+
+  try{
+
+    const bookingRef =
+      await addDoc(
+        collection(db,"bookings"),
+        bookingData
+      );
+
+    await addDoc(
+      collection(db,"payments"),
+      {
+        bookingId:bookingRef.id,
+        sessionId,
+        userId:currentUser.uid,
+        userName:currentProfile.name || "",
+        method,
+        transactionId,
+        status:"pending",
+        createdAt:serverTimestamp()
+      }
+    );
+
+    closeModal("bookingModal");
+
+    await loadBookings();
+    await loadPayments();
+
+    showToast("Booking submitted successfully.");
+
+    renderMemberBookings();
+
+  }catch(error){
+
+    showToast(error.message);
+  }
+};
+
+
+function renderAllBookings(){
+
+  if(!bookings.length){
+
+    $("allBookingsList").innerHTML =
+      `<div class="empty">No bookings yet.</div>`;
+
+    return;
+  }
+
+  $("allBookingsList").innerHTML = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th>Session</th>
+            <th>Method</th>
+            <th>Transaction</th>
+            <th>Status</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          ${bookings.map(b=>{
+
+            const s =
+              sessions.find(x=>x.id===b.sessionId);
+
+            const p =
+              payments.find(x=>x.bookingId===b.id);
+
+            return `
+
+              <tr>
+
+                <td>${escapeHtml(b.userName)}</td>
+
+                <td>${escapeHtml(s?.name || "Deleted session")}</td>
+
+                <td>${escapeHtml(b.paymentMethod)}</td>
+
+                <td>${escapeHtml(b.transactionId || "Cash")}</td>
+
+                <td>
+                  <span class="badge ${
+                    p?.status==="verified" ?
+                    "green" :
+                    "yellow"
+                  }">
+                    ${escapeHtml(p?.status || "pending")}
+                  </span>
+                </td>
+
+                <td>
+
+                  <div class="actions">
+
+                    ${
+                      p?.status!=="verified" ?
+
+                      `<button
+                        class="btn btn-success"
+                        onclick="verifyPayment('${p?.id || ""}')">
+                        Verify Payment
+                      </button>` :
+                      ""
+                    }
+
+                    <button
+                      class="btn btn-danger"
+                      onclick="deleteBooking('${b.id}')">
+                      Delete
+                    </button>
+
+                  </div>
+
+                </td>
+
+              </tr>
+
+            `;
+
+          }).join("")}
+
+        </tbody>
+
+      </table>
+
+    </div>
+  `;
+}
+
+
+window.deleteBooking = async function(id){
+
+  if(!confirm("Delete this booking?"))
+    return;
+
+  await deleteDoc(
+    doc(db,"bookings",id)
+  );
+
+  const p =
+    payments.find(x=>x.bookingId===id);
+
+  if(p){
+
+    await deleteDoc(
+      doc(db,"payments",p.id)
+    );
+  }
+
+  await loadBookings();
+  await loadPayments();
+
+  renderAllBookings();
+
+  showToast("Booking deleted.");
+};
+
+
+/* ============================================================
+   PAYMENTS
+   ============================================================ */
+
+function renderPayments(){
+
+  if(!payments.length){
+
+    $("paymentsList").innerHTML =
+      `<div class="empty">No payments submitted yet.</div>`;
+
+    return;
+  }
+
+  $("paymentsList").innerHTML = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Member</th>
+            <th>Method</th>
+            <th>Transaction ID</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+
+        <tbody>
+
+          ${payments.map(p=>`
+
+            <tr>
+
+              <td>${escapeHtml(p.userName)}</td>
+
+              <td>${escapeHtml(p.method)}</td>
+
+              <td>${escapeHtml(p.transactionId || "Cash")}</td>
+
+              <td>
+
+                <span class="badge ${
+                  p.status==="verified" ?
+                  "green" :
+                  "yellow"
+                }">
+
+                  ${escapeHtml(p.status || "pending")}
+
+                </span>
+
+              </td>
+
+              <td>
+
+                <div class="actions">
+
+                  ${
+                    p.status!=="verified" ?
+
+                    `<button
+                      class="btn btn-success"
+                      onclick="verifyPayment('${p.id}')">
+                      Verify
+                    </button>` :
+                    ""
+                  }
+
+                  <button
+                    class="btn btn-danger"
+                    onclick="deletePayment('${p.id}')">
+                    Delete
+                  </button>
+
+                </div>
+
+              </td>
+
+            </tr>
+
+          `).join("")}
+
+        </tbody>
+
+      </table>
+
+    </div>
+  `;
+}
+
+
+window.verifyPayment = async function(id){
+
+  if(!id) return;
+
+  await updateDoc(
+    doc(db,"payments",id),
+    {
+      status:"verified",
+      verifiedBy:currentUser.uid,
+      verifiedAt:serverTimestamp()
+    }
+  );
+
+  await loadPayments();
+
+  renderPayments();
+  renderAllBookings();
+  renderDashboard();
+
+  showToast(
+    "Payment verified successfully."
+  );
+};
+
+
+window.deletePayment = async function(id){
+
+  if(!confirm("Delete this payment record?"))
+    return;
+
+  await deleteDoc(
+    doc(db,"payments",id)
+  );
+
+  await loadPayments();
+
+  renderPayments();
+  renderAllBookings();
+
+  showToast("Payment deleted.");
+};
+
+
+/* ============================================================
+   SETTINGS
+   ============================================================ */
+
+function renderSettings(){
+
+  $("bkashSetting").value =
+    settingsData.bkash || "";
+
+  $("nagadSetting").value =
+    settingsData.nagad || "";
+
+  $("bankSetting").value =
+    settingsData.bank || "";
+
+  $("bankNameSetting").value =
+    settingsData.bankName || "";
+
+
+  const takerMembers =
+    attendanceTakers.map(id=>
+      members.find(m=>m.id===id)
+    ).filter(Boolean);
+
+  $("takersList").innerHTML = takerMembers.length ?
+
+    takerMembers.map(m=>`
+
+      <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        padding:12px;
+        background:#181818;
+        border-radius:8px;
+        margin-bottom:7px;
+      ">
+
+        <span>
+          ${escapeHtml(m.name)}
+        </span>
+
+        <button
+          class="btn btn-danger"
+          onclick="removeTaker('${m.id}')">
+          Remove
+        </button>
+
+      </div>
+
+    `).join("") :
+
+    `<div class="empty">No attendance taker permissions assigned.</div>`;
+}
+
+
+window.saveSettings = async function(){
+
+  const data = {
+
+    bkash:$("bkashSetting").value.trim(),
+
+    nagad:$("nagadSetting").value.trim(),
+
+    bank:$("bankSetting").value.trim(),
+
+    bankName:$("bankNameSetting").value.trim(),
+
+    updatedAt:serverTimestamp()
+  };
+
+  await setDoc(
+    doc(db,"settings","general"),
+    data,
+    {merge:true}
+  );
+
+  settingsData = {
+    ...settingsData,
+    ...data
+  };
+
+  showToast("Payment settings saved.");
+};
+
+
+window.openTakerModal = function(){
+
+  const available =
+    members.filter(
+      m=>
+        m.role!=="organizer" &&
+        !attendanceTakers.includes(m.id)
+    );
+
+  $("takerMember").innerHTML =
+    available.length ?
+
+    available.map(m=>`
+      <option value="${m.id}">
+        ${escapeHtml(m.name)}
+      </option>
+    `).join("") :
+
+    `<option value="">No available members</option>`;
+
+  openModal("takerModal");
+};
+
+
+window.saveTaker = async function(){
+
+  const id =
+    $("takerMember").value;
+
+  if(!id) return;
+
+  if(!attendanceTakers.includes(id))
+    attendanceTakers.push(id);
+
+  await setDoc(
+    doc(db,"settings","attendancePermissions"),
+    {
+      takers:attendanceTakers,
+      updatedAt:serverTimestamp()
+    },
+    {merge:true}
+  );
+
+  closeModal("takerModal");
+
+  renderSettings();
+
+  showToast("Attendance permission added.");
+};
+
+
+window.removeTaker = async function(id){
+
+  attendanceTakers =
+    attendanceTakers.filter(x=>x!==id);
+
+  await setDoc(
+    doc(db,"settings","attendancePermissions"),
+    {
+      takers:attendanceTakers,
+      updatedAt:serverTimestamp()
+    },
+    {merge:true}
+  );
+
+  renderSettings();
+
+  showToast("Attendance permission removed.");
+};
+
+
+/* ============================================================
+   MEMBER SIDE
+   ============================================================ */
+
+function renderMemberHome(){
+
+  const mine =
+    bookings.filter(
+      b=>b.userId===currentUser.uid
+    );
+
+  $("memberBookingCount").textContent =
+    mine.length;
+
+  renderMemberAttendanceCount();
+
+  const upcoming =
+    sessions.slice(0,5);
+
+  $("memberUpcomingSessions").innerHTML =
+    upcoming.length ?
+
+    upcoming.map(s=>`
+
+      <div class="setup-card">
+
+        <h4>${escapeHtml(s.name)}</h4>
+
+        <p style="color:#888;margin-top:7px">
+          ${s.duration} hours •
+          ${s.setups} setups •
+          ${s.totalSongs} songs
+        </p>
+
+        <p style="margin-top:7px">
+          ${s.date} ${s.startTime}
+        </p>
+
+        <button
+          class="btn btn-primary"
+          style="margin-top:10px"
+          onclick="showPage('memberBreaking')">
+          View Session
+        </button>
+
+      </div>
+
+    `).join("") :
+
+    `<div class="empty">No upcoming sessions.</div>`;
+}
+
+
+function renderMemberMeetings(){
+
+  $("memberMeetingsList").innerHTML =
+    meetings.length ?
+
+    meetings.map(m=>`
+
+      <div class="setup-card">
+
+        <h4>${escapeHtml(m.topic)}</h4>
+
+        <p style="color:#999;margin-top:7px">
+          ${m.date} at ${m.startTime}
+        </p>
+
+        <p style="margin-top:7px;color:#aaa">
+          ${(m.memberIds||[]).length} members invited
+        </p>
+
+      </div>
+
+    `).join("") :
+
+    `<div class="empty">No meetings available.</div>`;
+}
+
+
+async function renderMemberAttendance(){
+
+  const snap =
+    await getDocs(
+      query(
+        collection(db,"attendance"),
+        where("userId","==",currentUser.uid)
+      )
+    );
+
+  const records =
+    snap.docs.map(d=>({
+      id:d.id,
+      ...d.data()
+    }));
+
+  $("memberAttendanceList").innerHTML =
+    records.length ?
+
+    `
+
+      <div class="table-wrap">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>Meeting</th>
+              <th>Status</th>
+              <th>Time</th>
+              <th>Late</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            ${records.map(r=>{
+
+              const m =
+                meetings.find(x=>x.id===r.meetingId);
+
+              let late="—";
+
+              if(
+                r.status==="present" &&
+                r.presentTime &&
+                m
+              ){
+
+                const start =
+                  new Date(`${m.date}T${m.startTime}`);
+
+                const present =
+                  new Date(r.presentTime);
+
+                const mins =
+                  Math.max(
+                    0,
+                    Math.round((present-start)/60000)
+                  );
+
+                late =
+                  mins>0 ?
+                  `${mins} min` :
+                  "On time";
+              }
+
+              return `
+
+                <tr>
+
+                  <td>${escapeHtml(m?.topic || "Deleted meeting")}</td>
+
+                  <td>
+                    <span class="badge ${
+                      r.status==="present" ?
+                      "green" :
+                      "red"
+                    }">
+                      ${escapeHtml(r.status)}
+                    </span>
+                  </td>
+
+                  <td>
+                    ${
+                      r.presentTime ?
+                      new Date(r.presentTime)
+                        .toLocaleTimeString([],{
+                          hour:"2-digit",
+                          minute:"2-digit"
+                        }) :
+                      "—"
+                    }
+                  </td>
+
+                  <td>${late}</td>
+
+                </tr>
+              `;
+
+            }).join("")}
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    ` :
+
+    `<div class="empty">No attendance records yet.</div>`;
+}
+
+
+async function renderMemberAttendanceCount(){
+
+  const snap =
+    await getDocs(
+      query(
+        collection(db,"attendance"),
+        where("userId","==",currentUser.uid),
+        where("status","==","present")
+      )
+    );
+
+  $("memberAttendanceCount").textContent =
+    snap.size;
+}
+
+
+function renderMemberSessions(){
+
+  $("memberSessionsList").innerHTML =
+    sessions.length ?
+
+    sessions.map(s=>{
+
+      const count =
+        bookings.filter(
+          b=>
+            b.sessionId===s.id &&
+            b.status!=="cancelled"
+        ).length;
+
+      return `
+
+        <div class="setup-card">
+
+          <div class="section-header">
+
+            <div>
+
+              <h3>${escapeHtml(s.name)}</h3>
+
+              <p style="color:#888;margin-top:6px">
+                ${s.duration}-hour session •
+                ${s.setups} setups •
+                ${s.totalSongs} songs
+              </p>
+
+            </div>
+
+            <span class="badge ${
+              count >= s.capacity ?
+              "red" :
+              "green"
+            }">
+
+              ${
+                count >= s.capacity ?
+                "MAX REACHED" :
+                `${s.capacity-count} places left`
+              }
+
+            </span>
+
+          </div>
+
+          <p style="color:#aaa">
+            ${s.date} ${s.startTime}
+          </p>
+
+          <p style="color:#888;margin-top:7px">
+            ${s.duration===6 ?
+              "3 setups • 3 songs each • 1h 30m per setup • 1h 30m sound setup + spare time" :
+              "2 setups • 2 songs each • 4 songs total"}
+          </p>
+
+          ${
+            count < s.capacity ?
+
+            `<button
+              class="btn btn-primary"
+              style="margin-top:12px"
+              onclick="openBookingModal('${s.id}')">
+              BOOK NOW
+            </button>` :
+
+            `<button
+              class="btn"
+              style="margin-top:12px"
+              disabled>
+              MAX REACHED
+            </button>`
+          }
+
+        </div>
+
+      `;
+
+    }).join("") :
+
+    `<div class="empty">No sessions available.</div>`;
+}
+
+
+function renderMemberBookings(){
+
+  const mine =
+    bookings.filter(
+      b=>b.userId===currentUser.uid
+    );
+
+  if(!mine.length){
+
+    $("memberBookingsList").innerHTML =
+      `<div class="empty">You have no bookings.</div>`;
+
+    return;
+  }
+
+  $("memberBookingsList").innerHTML = `
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Session</th>
+            <th>Payment</th>
+            <th>Transaction</th>
+            <th>Status</th>
+          </tr>
+
+        </thead>
+
+        <tbody>
+
+          ${mine.map(b=>{
+
+            const s =
+              sessions.find(x=>x.id===b.sessionId);
+
+            const p =
+              payments.find(x=>x.bookingId===b.id);
+
+            return `
+
+              <tr>
+
+                <td>${escapeHtml(s?.name || "Deleted session")}</td>
+
+                <td>${escapeHtml(b.paymentMethod)}</td>
+
+                <td>${escapeHtml(b.transactionId || "Cash")}</td>
+
+                <td>
+
+                  <span class="badge ${
+                    p?.status==="verified" ?
+                    "green" :
+                    "yellow"
+                  }">
+
+                    ${
+                      p?.status==="verified" ?
+                      "Payment Verified" :
+                      "Payment Pending"
+                    }
+
+                  </span>
+
+                </td>
+
+              </tr>
+
+            `;
+
+          }).join("")}
+
+        </tbody>
+
+      </table>
+
+    </div>
+  `;
+}
+
+
+function renderProfile(){
+
+  $("profileInfo").innerHTML = `
+
+    <div class="grid-2">
+
+      <div>
+        <small style="color:#888">Name</small>
+        <p style="margin-top:5px">
+          ${escapeHtml(currentProfile.name)}
+        </p>
+      </div>
+
+      <div>
+        <small style="color:#888">Email</small>
+        <p style="margin-top:5px">
+          ${escapeHtml(currentProfile.email)}
+        </p>
+      </div>
+
+      <div>
+        <small style="color:#888">Phone</small>
+        <p style="margin-top:5px">
+          ${escapeHtml(currentProfile.phone || "Not provided")}
+        </p>
+      </div>
+
+      <div>
+        <small style="color:#888">Role</small>
+        <p style="margin-top:5px">
+          <span class="badge green">
+            ${escapeHtml(currentProfile.role)}
+          </span>
+        </p>
+      </div>
+
+    </div>
+  `;
+}
+
+
+/* ============================================================
+   MEMBER BOOKING REFRESH
+   ============================================================ */
+
+window.renderMemberBookings =
+  renderMemberBookings;
+
+
+/* ============================================================
+   INITIAL DEFAULTS
+   ============================================================ */
+
+$("meetingDate").value =
+  localDateTime().date;
+
+$("meetingTime").value =
+  localDateTime().time;
+
+$("sessionDate").value =
+  localDateTime().date;
+
+$("sessionTime").value =
+  localDateTime().time;
+
+updateSessionStructure();
+
+
+/* ============================================================
+   EXPOSE FUNCTIONS
+   ============================================================ */
+
+window.renderAttendance = renderAttendance;
+window.renderMeetings = renderMeetings;
+window.renderSessions = renderSessions;
+window.renderMembers = renderMembers;
+window.renderPayments = renderPayments;
+window.renderAllBookings = renderAllBookings;
+window.renderSettings = renderSettings;
 
 </script>
 
